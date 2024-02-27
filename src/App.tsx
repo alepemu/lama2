@@ -1,128 +1,114 @@
-// import React, { useState } from "react";
-// import {
-//   DndContext,
-//   closestCenter,
-//   KeyboardSensor,
-//   PointerSensor,
-//   useSensor,
-//   useSensors,
-//   DragEndEvent,
-// } from "@dnd-kit/core";
-// import {
-//   arrayMove,
-//   SortableContext,
-//   sortableKeyboardCoordinates,
-//   verticalListSortingStrategy,
-// } from "@dnd-kit/sortable";
+import {
+  closestCorners,
+  DndContext,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core"
+import {
+  arraySwap,
+  rectSortingStrategy,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+} from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
+import { useState } from "react"
+import { Masonry } from "./Masonry"
+import { range } from "./range"
 
-// import { SortableItem } from "./SortableItem";
+const initialItems = range(15).map((id) => ({
+  id: id + 1,
+  height: 100 + Math.random() * 400,
+}))
 
-// function App() {
-//   const [items, setItems] = useState([1, 2, 3]);
-//   const sensors = useSensors(
-//     useSensor(PointerSensor),
-//     useSensor(KeyboardSensor, {
-//       coordinateGetter: sortableKeyboardCoordinates,
-//     })
-//   );
+type Item = typeof initialItems[number]
 
-//   return (
-//     <DndContext
-//       sensors={sensors}
-//       collisionDetection={closestCenter}
-//       onDragEnd={handleDragEnd}
-//     >
-//       <SortableContext items={items} strategy={verticalListSortingStrategy}>
-//         {items.map((id) => (
-//           <SortableItem key={id} id={id} />
-//         ))}
-//       </SortableContext>
-//     </DndContext>
-//   );
+export default function App() {
+  const [items, setItems] = useState(initialItems)
 
-//   function handleDragEnd(event: DragEndEvent) {
-//     const { active, over } = event;
+  const sensors = useSensors(
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  )
 
-//     if (over && active.id !== over.id) {
-//       setItems((items) => {
-//         const oldIndex = items.indexOf(Number(active.id));
-//         const newIndex = items.indexOf(Number(over.id));
-
-//         return arrayMove(items, oldIndex, newIndex);
-//       });
-//     }
-//   }
-// }
-
-import React, { useState } from "react";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
-
-// Components
-import Post from "./Post";
-import { Draggable } from "./Draggable";
-import { Droppable } from "./Droppable";
-
-// Data
-import strings from "./assets/strings.json";
-
-function App() {
   return (
-    <DndContext>
-      <div className="bg-stone-800 w-screen h-screen p-10">
-        <div className="flex flex-wrap gap-4">
-          {strings.map((text, index) => (
-            <Post key={index} text={text} />
-          ))}
-        </div>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCorners}
+      onDragEnd={(event) => {
+        const { active, over } = event
+        if (over && active.id !== over.id) {
+          setItems((items) => {
+            const oldIndex = items.findIndex((item) => item.id === active.id)
+            const newIndex = items.findIndex((item) => item.id === over.id)
+            return arraySwap(items, oldIndex, newIndex)
+          })
+        }
+      }}
+    >
+      <div className="p-4 overflow-clip">
+        <SortableContext items={items} strategy={rectSortingStrategy}>
+          <Masonry
+            items={items}
+            itemKey={(item) => item.id}
+            columnWidth={300}
+            gap={8}
+            renderItem={(item) => <Cell item={item} />}
+          />
+        </SortableContext>
       </div>
     </DndContext>
-  );
+  )
 }
 
-// function App() {
-//   const [isDropped, setIsDropped] = useState(false);
-//   const draggableMarkup = <Draggable>Drag me</Draggable>;
+function Cell({ item }: { item: Item }) {
+  const sortable = useSortable({
+    id: item.id,
+    animateLayoutChanges: (args) => {
+      // return false
+      // return args.isSorting
+      return !args.wasDragging
+    },
+  })
 
-//   return (
-//     <DndContext onDragEnd={handleDragEnd}>
-//       {!isDropped ? draggableMarkup : null}
-//       <Droppable>{isDropped ? draggableMarkup : "Drop here"}</Droppable>
-//     </DndContext>
-//   );
+  const getPlaceholderHeight = () => {
+    if (sortable.isOver && sortable.active) {
+      return sortable.active.rect.current.initial?.height
+    }
 
-//   function handleDragEnd(event: DragEndEvent) {
-//     if (event.over && event.over.id === "droppable") {
-//       setIsDropped(true);
-//     }
-//   }
-// }
+    if (sortable.isDragging && sortable.over) {
+      return sortable.over.rect.height
+    }
 
-// function App() {
-//   const containers = ["A", "B", "C"];
-//   const [parent, setParent] = useState(null);
-//   const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>;
+    return item.height
+  }
 
-//   return (
-//     <DndContext onDragEnd={handleDragEnd}>
-//       {parent === null ? draggableMarkup : null}
-
-//       {containers.map((id) => (
-//         // We updated the Droppable component so it would accept an `id`
-//         // prop and pass it to `useDroppable`
-//         <Droppable key={id} id={id}>
-//           {parent === id ? draggableMarkup : "Drop here"}
-//         </Droppable>
-//       ))}
-//     </DndContext>
-//   );
-
-//   function handleDragEnd(event: DragEndEvent) {
-//     const { over } = event;
-
-//     // If the item is dropped over a container, set it as the parent
-//     // otherwise reset the parent to `null`
-//     setParent(over ? over.id : null);
-//   }
-// }
-
-export default App;
+  return (
+    <div style={{ height: getPlaceholderHeight(), transition: "0.2s height" }}>
+      <div
+        ref={sortable.setNodeRef}
+        style={{
+          height: item.height,
+          lineHeight: item.height + "px",
+          transform: CSS.Translate.toString(sortable.transform),
+          transition: sortable.transition,
+          // opacity:
+          //   sortable.isOver && sortable.over?.id !== sortable.active?.id
+          //     ? 0.5
+          //     : 1,
+        }}
+        {...sortable.attributes}
+        {...sortable.listeners}
+        className="bg-blue-700 text-white font-bold text-center text-6xl"
+      >
+        {item.id}
+      </div>
+    </div>
+  )
+}
