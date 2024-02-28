@@ -1,6 +1,6 @@
-import { Fragment, Key, ReactNode } from "react"
-import { range } from "./range"
-import { useSize } from "./useSize"
+import { Fragment, Key, ReactNode } from "react";
+import { range } from "./range";
+import { useSize } from "./useSize";
 
 export function Masonry<T>({
   items,
@@ -9,14 +9,15 @@ export function Masonry<T>({
   gap,
   renderItem,
 }: {
-  items: T[]
-  itemKey: (item: T) => Key
-  columnWidth: number
-  gap?: number | string
-  renderItem: (item: T) => ReactNode
+  items: T[];
+  itemKey: (item: T) => Key;
+  columnWidth: number;
+  gap?: number | string;
+  renderItem: (item: T) => ReactNode;
 }) {
-  const [sizeRef, size] = useSize()
-  const columnCount = Math.floor(size.width / columnWidth)
+  const [sizeRef, size] = useSize();
+
+  const columnCount = Math.floor(size.width / columnWidth);
 
   return (
     <div ref={sizeRef} className="flex" style={{ gap }}>
@@ -30,5 +31,5 @@ export function Masonry<T>({
         </div>
       ))}
     </div>
-  )
+  );
 }
