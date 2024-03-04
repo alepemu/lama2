@@ -52,7 +52,7 @@ export function Dashboard() {
       collisionDetection={closestCorners}
       onDragEnd={onDragEnd}
     >
-      <div className="p-4 overflow-clip bg-yellow-100 h-screen">
+      <div className="p-4 overflow-clip bg-zinc-900 min-h-[calc(100vh-64px)]">
         <SortableContext items={items} strategy={rectSwappingStrategy}>
           <Masonry
             items={items}

@@ -21,7 +21,7 @@ export function Cell({ item }: { item: ItemType }) {
       }}
       {...sortable.attributes}
       {...sortable.listeners}
-      className="bg-blue-700 p-4 rounded-xl text-sm text-white"
+      className="bg-stone-700 p-4 rounded-xl text-sm font-bold text-white border border-white/25"
     >
       {item.text}
     </div>
