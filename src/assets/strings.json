@@ -1,14 +1,50 @@
 [
-  "0 - The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
-  "1 - The cat sat on the mat.",
-  "2 - I love to explore new places and try different foods.",
-  "3 - Learning a new language opens up a world of possibilities.",
-  "4 - Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot.",
-  "5 - Success is not final, failure is not fatal: It is the courage to continue that counts.",
-  "6 - The only way to do great work is to love what you do.",
-  "7 - In the middle of difficulty lies opportunity.",
-  "8 - Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions.",
-  "9 - The journey of a thousand miles begins with one step.",
-  "10 - Believe you can and you're halfway there.",
-  "11 - The only limit to our realization of tomorrow will be our doubts of today."
+  {
+    "id": 1,
+    "text": "1 - The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
+  },
+  {
+    "id": 2,
+    "text": "2 - The cat sat on the mat."
+  },
+  {
+    "id": 3,
+    "text": "3 - I love to explore new places and try different foods."
+  },
+  {
+    "id": 4,
+    "text": "4 - Learning a new language opens up a world of possibilities."
+  },
+  {
+    "id": 5,
+    "text": "5 - Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot."
+  },
+  {
+    "id": 6,
+    "text": "6 - Success is not final, failure is not fatal: It is the courage to continue that counts."
+  },
+  {
+    "id": 7,
+    "text": "7 - The only way to do great work is to love what you do."
+  },
+  {
+    "id": 8,
+    "text": "8 - In the middle of difficulty lies opportunity."
+  },
+  {
+    "id": 9,
+    "text": "9 - Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions."
+  },
+  {
+    "id": 10,
+    "text": "10 - The journey of a thousand miles begins with one step."
+  },
+  {
+    "id": 11,
+    "text": "11 - Believe you can and you're halfway there."
+  },
+  {
+    "id": 12,
+    "text": "12 - The only limit to our realization of tomorrow will be our doubts of today."
+  }
 ]

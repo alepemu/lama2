@@ -2,15 +2,18 @@ import { Fragment, Key, ReactNode } from "react";
 import { range } from "../services/range";
 import { useSize } from "../hooks/useSize";
 
+import { ItemType } from "../types/types";
+
 export function Masonry<T>({
   items,
   itemKey,
   renderItem,
 }: {
-  items: T[];
-  itemKey: (item: T) => Key;
-  renderItem: (item: T) => ReactNode;
+  items: ItemType[];
+  itemKey: (item: ItemType) => Key;
+  renderItem: (item: ItemType) => ReactNode;
 }) {
+
   const [sizeRef, size] = useSize();
   const columns = Math.floor(size.width / 300);
   const gap = 8;

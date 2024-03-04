@@ -1,11 +1,10 @@
+// Drag and drop
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { initialItems } from "../App";
+import { ItemType } from "../types/types";
 
-type Item = (typeof initialItems)[number];
-
-export function Cell({ item }: { item: Item }) {
+export function Cell({ item }: { item: ItemType }) {
   const sortable = useSortable({
     id: item.id,
     animateLayoutChanges: (args) => {
@@ -16,14 +15,9 @@ export function Cell({ item }: { item: Item }) {
   });
 
   const getPlaceholderHeight = () => {
-    if (sortable.isOver && sortable.active) {
-      // console.log('1', sortable);
+    if (sortable.isOver && sortable.active)
       return sortable.active.rect.current.initial?.height;
-    }
-    if (sortable.isDragging && sortable.over) {
-      // console.log('2', sortable);
-      return sortable.over.rect.height;
-    }
+    if (sortable.isDragging && sortable.over) return sortable.over.rect.height;
   };
 
   return (
@@ -33,6 +27,7 @@ export function Cell({ item }: { item: Item }) {
         style={{
           transform: CSS.Translate.toString(sortable.transform),
           transition: sortable.transition,
+          backgroundColor: sortable.isDragging ? 'red' : 'green',
         }}
         {...sortable.attributes}
         {...sortable.listeners}
