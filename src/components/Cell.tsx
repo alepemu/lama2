@@ -14,20 +14,18 @@ export function Cell({ item }: { item: ItemType }) {
     },
   });
 
-  const getPlaceholderHeight = () => {
-    if (sortable.isOver && sortable.active)
-      return sortable.active.rect.current.initial?.height;
-    if (sortable.isDragging && sortable.over) return sortable.over.rect.height;
-  };
-
   return (
-    <div style={{ height: getPlaceholderHeight(), transition: "0.5s height" }}>
       <div
         ref={sortable.setNodeRef}
         style={{
-          transform: CSS.Translate.toString(sortable.transform),
-          transition: sortable.transition,
-          backgroundColor: sortable.isDragging ? 'red' : 'green',
+          backgroundColor: sortable.isDragging ? "red" : "green",
+          transform: sortable.isDragging
+            ? CSS.Translate.toString(sortable.transform)
+            : undefined,
+          opacity:
+            sortable.isOver && sortable.over?.id !== sortable.active?.id
+              ? 0.5
+              : 1,
         }}
         {...sortable.attributes}
         {...sortable.listeners}
@@ -35,6 +33,5 @@ export function Cell({ item }: { item: ItemType }) {
       >
         {item.text}
       </div>
-    </div>
   );
 }
