@@ -4,7 +4,9 @@ export function useSize() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [element, ref] = useState<Element | null>();
-
+  // console.log('element', element, ref);
+  // console.log(width, height);
+  
   useEffect(() => {
     if (!element) return;
 

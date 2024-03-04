@@ -1,7 +1,6 @@
 import {
   closestCorners,
   DndContext,
-  KeyboardSensor,
   MouseSensor,
   TouchSensor,
   useSensor,
@@ -13,27 +12,29 @@ import {
   SortableContext,
 } from "@dnd-kit/sortable";
 import { useState } from "react";
-import { Masonry } from "./Masonry";
-import { Cell } from "./Cell";
-import { range } from "./range";
+import { Masonry } from "./components/Masonry";
+import { Cell } from "./components/Cell";
+import { range } from "./services/range";
 
 // Data
 import strings from "./assets/strings.json";
 
-const initialItems = range(15).map((id) => ({
+export const initialItems = range(12).map((id) => ({
   id: id + 1,
-  height: 100 + Math.random() * 200,
+  text: strings[id],
 }));
 
 export function App() {
   const [items, setItems] = useState(initialItems);
 
   const sensors = useSensors(
-    useSensor(MouseSensor)
-    // useSensor(TouchSensor),
-    // useSensor(KeyboardSensor, {
-    //   coordinateGetter: sortableKeyboardCoordinates,
-    // })
+    useSensor(MouseSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5,
+      },
+    })
   );
 
   return (
@@ -51,13 +52,11 @@ export function App() {
         }
       }}
     >
-      <div className="p-4 overflow-clip">
+      <div className="p-4 overflow-clip bg-yellow-100 h-screen">
         <SortableContext items={items} strategy={rectSwappingStrategy}>
           <Masonry
             items={items}
             itemKey={(item) => item.id}
-            columnWidth={300}
-            gap={8}
             renderItem={(item) => <Cell item={item} />}
           />
         </SortableContext>

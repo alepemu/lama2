@@ -1,11 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { range } from "./range";
 
-const initialItems = range(15).map((id) => ({
-  id: id + 1,
-  height: 100 + Math.random() * 200,
-}));
+import { initialItems } from "../App";
 
 type Item = (typeof initialItems)[number];
 
@@ -20,27 +16,29 @@ export function Cell({ item }: { item: Item }) {
   });
 
   const getPlaceholderHeight = () => {
-    if (sortable.isOver && sortable.active)
+    if (sortable.isOver && sortable.active) {
+      // console.log('1', sortable);
       return sortable.active.rect.current.initial?.height;
-    if (sortable.isDragging && sortable.over) return sortable.over.rect.height;
-    return item.height;
+    }
+    if (sortable.isDragging && sortable.over) {
+      // console.log('2', sortable);
+      return sortable.over.rect.height;
+    }
   };
 
   return (
-    <div style={{ height: getPlaceholderHeight(), transition: "0.2s height" }}>
+    <div style={{ height: getPlaceholderHeight(), transition: "0.5s height" }}>
       <div
         ref={sortable.setNodeRef}
         style={{
-          height: item.height,
-          lineHeight: item.height + "px",
           transform: CSS.Translate.toString(sortable.transform),
           transition: sortable.transition,
         }}
         {...sortable.attributes}
         {...sortable.listeners}
-        className="bg-blue-700 rounded-xl text-white font-bold text-center text-6xl"
+        className="bg-blue-700 p-4 rounded-xl text-sm text-white"
       >
-        {item.id}
+        {item.text}
       </div>
     </div>
   );
