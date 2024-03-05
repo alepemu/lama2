@@ -9,7 +9,7 @@ export function Grid({ children }: { children: ReactNode }) {
   return (
     <div
       ref={sizeRef}
-      className="grid gap-3 p-4"
+      className="grid gap-3 p-4 z-50"
       style={{
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
       }}

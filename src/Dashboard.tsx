@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 // Drag and drop
 import {
@@ -9,32 +9,67 @@ import {
   useSensor,
   MouseSensor,
   TouchSensor,
+  DragStartEvent,
+  DragEndEvent,
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
-import {
-  handleDragStart,
-  handleDragEnd,
-  handleDragCancel,
-} from "./services/dndActions";
+// import {
+//   handleDragStart,
+//   handleDragEnd,
+//   handleDragCancel,
+// } from "./services/dndActions";
 
 // Components
 import { Grid } from "./components/Grid";
 import { Note } from "./components/Note";
 import { SortableNote } from "./components/SortableNote";
 
-// Data
-import strings from "./assets/strings.json";
-
+// Redux
+import { useAppSelector, useAppDispatch } from "./hooks/store";
+import { rearrangeNotes } from "./store/notes/slice";
+import { arrayMove } from "@dnd-kit/sortable";
 import { NoteType } from "./types/types";
 
 export function Dashboard() {
-  const [items, setItems] = useState<NoteType[]>(strings);
+  const items = useAppSelector((state) => state.notes);
+  const dispatch = useAppDispatch();
   const [activeId, setActiveId] = useState<string | null>(null);
+
+  const handleRearrangeNotes = (items: NoteType[]) => {
+    dispatch(rearrangeNotes(items));
+  };
+
+  const handleDragStart = (
+    setActiveId: React.Dispatch<React.SetStateAction<string | null>>
+  ) =>
+    useCallback((event: DragStartEvent) => {
+      setActiveId(event.active.id.toString());
+    }, []);
+
+  const handleDragEnd = (
+    setActiveId: React.Dispatch<React.SetStateAction<string | null>>
+  ) =>
+    useCallback((event: DragEndEvent) => {
+      const { active, over } = event;
+      if (active.id !== over?.id) {
+        const oldIndex = items.findIndex((item) => item.id === active.id);
+        const newIndex = items.findIndex((item) => item.id === over!.id);
+        handleRearrangeNotes(arrayMove(items, oldIndex, newIndex));
+      }
+      setActiveId(null);
+    }, []);
+
+  const handleDragCancel = (
+    setActiveId: React.Dispatch<React.SetStateAction<string | null>>
+  ) =>
+    useCallback(() => {
+      setActiveId(null);
+    }, []);
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint: {
-        delay: 0,
+        delay: 100,
         tolerance: 0,
       },
     }),
@@ -51,7 +86,7 @@ export function Dashboard() {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragStart={handleDragStart(setActiveId)}
-      onDragEnd={handleDragEnd(setActiveId, setItems)}
+      onDragEnd={handleDragEnd(setActiveId)}
       onDragCancel={handleDragCancel(setActiveId)}
     >
       <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-64px)]">

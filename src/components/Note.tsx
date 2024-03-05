@@ -1,8 +1,18 @@
 import { forwardRef, CSSProperties } from "react";
 import { NoteProps } from "../types/types";
 
+import { useAppDispatch } from "../hooks/store";
+import { deleteNoteById } from "../store/notes/slice";
+
 const Note = forwardRef<HTMLDivElement, NoteProps>(
   ({ id, data, isDragging, style, ...props }, ref) => {
+    const dispatch = useAppDispatch();
+
+    const handleDeleteNote = () => {
+      console.log("handleDeleteNote", id);
+      dispatch(deleteNoteById(id));
+    };
+
     const inlineStyles: CSSProperties = {
       opacity: isDragging ? "0.75" : "1",
       border: isDragging ? "1px dashed white" : "",
@@ -18,6 +28,12 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
         style={inlineStyles}
         {...props}
       >
+        <button
+          className="bg-red-100/50 w-full text-red-700 font-bold cursor-pointer z-100"
+          onClick={handleDeleteNote}
+        >
+          X
+        </button>
         <h1 className="font-bold text-xl">{data.title}</h1>
         <p>{data.text}</p>
         <ul>
