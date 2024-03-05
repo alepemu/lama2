@@ -2,10 +2,10 @@ import { forwardRef, CSSProperties } from "react";
 import { ItemProps } from "../types/types";
 
 const Item = forwardRef<HTMLDivElement, ItemProps>(
-  ({ id, text, isDragging, style, ...props }, ref) => {
+  ({ id, title, text, isDragging, style, ...props }, ref) => {
     const inlineStyles: CSSProperties = {
       opacity: isDragging ? "0.75" : "1",
-      border: isDragging ? "2px dashed white" : "",
+      border: isDragging ? "1px dashed white" : "",
       transformOrigin: "50% 50%",
       cursor: isDragging ? "move" : "default",
       ...style,
@@ -13,12 +13,14 @@ const Item = forwardRef<HTMLDivElement, ItemProps>(
 
     return (
       <div
-        className="min-w-80 bg-stone-700 p-4 rounded-xl text-sm font-bold text-white border border-white/25"
+        className="min-w-80 bg-stone-700 p-4 rounded-xl text-white border border-white/25"
         ref={ref}
         style={inlineStyles}
         {...props}
       >
-        {id} + {text}
+        <h1 className="font-bold text-xl">{title}</h1>
+        <p>{text}</p>
+        <p className="italic opacity-50">Id: {id}</p>
       </div>
     );
   }

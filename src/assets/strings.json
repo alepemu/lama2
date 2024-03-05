@@ -1,50 +1,74 @@
 [
   {
     "id": "1",
-    "text": "1 - The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
+    "position": 1,
+    "title": "Note 1",
+    "text": "1 - The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
   },
   {
     "id": "2",
+    "position": 2,
+    "title": "Note 2",
     "text": "2 - The cat sat on the mat."
   },
   {
     "id": "3",
+    "position": 3,
+    "title": "Note 3",
     "text": "3 - I love to explore new places and try different foods."
   },
   {
     "id": "4",
+    "position": 4,
+    "title": "Note 4",
     "text": "4 - Learning a new language opens up a world of possibilities."
   },
   {
     "id": "5",
+    "position": 5,
+    "title": "Note 5",
     "text": "5 - Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot."
   },
   {
     "id": "6",
+    "position": 6,
+    "title": "Note 6",
     "text": "6 - Success is not final, failure is not fatal: It is the courage to continue that counts."
   },
   {
     "id": "7",
+    "position": 7,
+    "title": "Note 7",
     "text": "7 - The only way to do great work is to love what you do."
   },
   {
     "id": "8",
+    "position": 8,
+    "title": "Note 8",
     "text": "8 - In the middle of difficulty lies opportunity."
   },
   {
     "id": "9",
+    "position": 9,
+    "title": "Note 9",
     "text": "9 - Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions."
   },
   {
     "id": "10",
+    "position": 10,
+    "title": "Note 10",
     "text": "10 - The journey of a thousand miles begins with one step."
   },
   {
     "id": "11",
+    "position": 11,
+    "title": "Note 11",
     "text": "11 - Believe you can and you're halfway there."
   },
   {
     "id": "12",
+    "position": 12,
+    "title": "Note 12",
     "text": "12 - The only limit to our realization of tomorrow will be our doubts of today."
   }
 ]

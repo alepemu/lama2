@@ -1,9 +1,11 @@
 import { HTMLAttributes } from "react";
 
-export type ItemType = { id: string; text: string };
-
-export type ItemProps = HTMLAttributes<HTMLDivElement> & {
+export type ItemType = {
   id: string;
-  text?: string;
+  position?: number;
+  title: string;
+  text: string;
   isDragging?: boolean;
 };
+
+export type ItemProps = ItemType & HTMLAttributes<HTMLDivElement>;

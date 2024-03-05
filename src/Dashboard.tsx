@@ -26,7 +26,7 @@ import { SortableItem } from "./components/SortableItem";
 // Data
 import strings from "./assets/strings.json";
 
-type ItemType = { id: string; text: string };
+import { ItemType } from "./types/types";
 
 export function Dashboard() {
   const [items, setItems] = useState<ItemType[]>(strings);
@@ -79,7 +79,7 @@ export function Dashboard() {
         <SortableContext items={items} strategy={rectSortingStrategy}>
           <Grid>
             {items.map((item) => (
-              <SortableItem key={item.id} id={item.id} text={item.text} />
+              <SortableItem key={item.id} id={item.id} title={item.title} text={item.text} />
             ))}
           </Grid>
         </SortableContext>
@@ -88,7 +88,8 @@ export function Dashboard() {
           {activeId ? (
             <Item
               id={activeId}
-              text={items.find((item) => item.id == activeId)?.text}
+              title={items.find((item) => item.id == activeId)?.title || 'oops'}
+              text={items.find((item) => item.id == activeId)?.text || 'oops'}
               isDragging
             />
           ) : null}
