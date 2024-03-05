@@ -30,15 +30,19 @@ type ItemType = { id: string; text: string };
 
 export function App() {
   const [items, setItems] = useState<ItemType[]>(strings);
-
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const sensors = useSensors(
-    useSensor(MouseSensor),
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        delay: 0,
+        tolerance: 0,
+      },
+    }),
     useSensor(TouchSensor, {
       activationConstraint: {
         delay: 250,
-        tolerance: 5,
+        tolerance: 0,
       },
     })
   );
@@ -53,7 +57,6 @@ export function App() {
       setItems((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over!.id);
-
         return arrayMove(items, oldIndex, newIndex);
       });
     }
@@ -82,7 +85,13 @@ export function App() {
         </SortableContext>
 
         <DragOverlay style={{ transformOrigin: "0 0 " }}>
-          {activeId ? <Item id={activeId} text={"pfff"} isDragging /> : null}
+          {activeId ? (
+            <Item
+              id={activeId}
+              text={items.find((item) => item.id == activeId)?.text}
+              isDragging
+            />
+          ) : null}
         </DragOverlay>
       </div>
     </DndContext>
