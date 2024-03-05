@@ -28,7 +28,7 @@ import strings from "./assets/strings.json";
 
 type ItemType = { id: string; text: string };
 
-export function App() {
+export function Dashboard() {
   const [items, setItems] = useState<ItemType[]>(strings);
   const [activeId, setActiveId] = useState<string | null>(null);
 
