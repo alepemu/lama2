@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useSize } from "./hooks/useSize";
+import { useSize } from "../hooks/useSize";
 
 export function Grid({ children }: { children: ReactNode }) {
   const [sizeRef, size] = useSize();

@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { useSortable } from "@dnd-kit/sortable";
-import Item, { ItemProps } from "./Item";
+import { Item } from "./Item";
+import { ItemProps } from "../types/types";
 
 const SortableItem: FC<ItemProps> = (props) => {
-  const { isOver, attributes, listeners, setNodeRef } = useSortable(
-    { id: props.id }
-  );
+  const { isOver, attributes, listeners, setNodeRef } = useSortable({
+    id: props.id,
+  });
 
   const style = {
     opacity: isOver ? 0.5 : 1,
@@ -22,4 +23,4 @@ const SortableItem: FC<ItemProps> = (props) => {
   );
 };
 
-export default SortableItem;
+export { SortableItem };

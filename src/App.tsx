@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 // Drag and drop
 import {
@@ -19,9 +19,9 @@ import {
 } from "@dnd-kit/sortable";
 
 // Components
-import { Grid } from "./Grid";
-import SortableItem from "./SortableItem";
-import Item from "./Item";
+import { Grid } from "./components/Grid";
+import { Item } from "./components/Item";
+import { SortableItem } from "./components/SortableItem";
 
 // Data
 import strings from "./assets/strings.json";
@@ -75,7 +75,7 @@ export function App() {
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <div className="overflow-clip bg-zinc-900 min-h-[100vh]">
+      <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-64px)]">
         <SortableContext items={items} strategy={rectSortingStrategy}>
           <Grid>
             {items.map((item) => (

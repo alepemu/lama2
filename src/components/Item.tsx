@@ -1,10 +1,5 @@
-import { forwardRef, HTMLAttributes, CSSProperties } from "react";
-
-export type ItemProps = HTMLAttributes<HTMLDivElement> & {
-  id: string;
-  text?: string;
-  isDragging?: boolean;
-};
+import { forwardRef, CSSProperties } from "react";
+import { ItemProps } from "../types/types";
 
 const Item = forwardRef<HTMLDivElement, ItemProps>(
   ({ id, text, isDragging, style, ...props }, ref) => {
@@ -29,4 +24,4 @@ const Item = forwardRef<HTMLDivElement, ItemProps>(
   }
 );
 
-export default Item;
+export { Item };
