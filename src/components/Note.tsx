@@ -1,12 +1,12 @@
 import { forwardRef, CSSProperties } from "react";
-import { ItemProps } from "../types/types";
+import { NoteProps } from "../types/types";
 
-const Item = forwardRef<HTMLDivElement, ItemProps>(
-  ({ id, title, text, isDragging, style, ...props }, ref) => {
+const Note = forwardRef<HTMLDivElement, NoteProps>(
+  ({ id, data, isDragging, style, ...props }, ref) => {
     const inlineStyles: CSSProperties = {
       opacity: isDragging ? "0.75" : "1",
       border: isDragging ? "1px dashed white" : "",
-      transformOrigin: "50% 50%",
+      // transformOrigin: "50% 50%", // ??
       cursor: isDragging ? "move" : "default",
       ...style,
     };
@@ -18,12 +18,17 @@ const Item = forwardRef<HTMLDivElement, ItemProps>(
         style={inlineStyles}
         {...props}
       >
-        <h1 className="font-bold text-xl">{title}</h1>
-        <p>{text}</p>
+        <h1 className="font-bold text-xl">{data.title}</h1>
+        <p>{data.text}</p>
+        <ul>
+          {data.list?.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
         <p className="italic opacity-50">Id: {id}</p>
       </div>
     );
   }
 );
 
-export { Item };
+export { Note };

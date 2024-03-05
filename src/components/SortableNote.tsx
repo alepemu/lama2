@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useSortable } from "@dnd-kit/sortable";
-import { Item } from "./Item";
-import { ItemProps } from "../types/types";
+import { Note } from "./Note";
+import { NoteProps } from "../types/types";
 
-const SortableItem: FC<ItemProps> = (props) => {
+const SortableNote: FC<NoteProps> = (props) => {
   const { isOver, attributes, listeners, setNodeRef } = useSortable({
     id: props.id,
   });
@@ -13,7 +13,7 @@ const SortableItem: FC<ItemProps> = (props) => {
   };
 
   return (
-    <Item
+    <Note
       ref={setNodeRef}
       style={style}
       {...props}
@@ -23,4 +23,4 @@ const SortableItem: FC<ItemProps> = (props) => {
   );
 };
 
-export { SortableItem };
+export { SortableNote };

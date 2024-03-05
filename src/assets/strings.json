@@ -2,73 +2,109 @@
   {
     "id": "1",
     "position": 1,
-    "title": "Note 1",
-    "text": "1 - The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
+    "data": {
+      "title": "Note 1",
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "2",
     "position": 2,
-    "title": "Note 2",
-    "text": "2 - The cat sat on the mat."
+    "data": {
+      "title": "Note 2",
+      "text": "The cat sat on the mat.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "3",
     "position": 3,
-    "title": "Note 3",
-    "text": "3 - I love to explore new places and try different foods."
+    "data": {
+      "title": "Note 3",
+      "text": "I love to explore new places and try different foods.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "4",
     "position": 4,
-    "title": "Note 4",
-    "text": "4 - Learning a new language opens up a world of possibilities."
+    "data": {
+      "title": "Note 4",
+      "text": "Learning a new language opens up a world of possibilities.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "5",
     "position": 5,
-    "title": "Note 5",
-    "text": "5 - Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot."
+    "data": {
+      "title": "Note 5",
+      "text": "Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "6",
     "position": 6,
-    "title": "Note 6",
-    "text": "6 - Success is not final, failure is not fatal: It is the courage to continue that counts."
+    "data": {
+      "title": "Note 6",
+      "text": "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "7",
     "position": 7,
-    "title": "Note 7",
-    "text": "7 - The only way to do great work is to love what you do."
+    "data": {
+      "title": "Note 7",
+      "text": "The only way to do great work is to love what you do.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "8",
     "position": 8,
-    "title": "Note 8",
-    "text": "8 - In the middle of difficulty lies opportunity."
+    "data": {
+      "title": "Note 8",
+      "text": "In the middle of difficulty lies opportunity.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "9",
     "position": 9,
-    "title": "Note 9",
-    "text": "9 - Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions."
+    "data": {
+      "title": "Note 9",
+      "text": "Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "10",
     "position": 10,
-    "title": "Note 10",
-    "text": "10 - The journey of a thousand miles begins with one step."
+    "data": {
+      "title": "Note 10",
+      "text": "The journey of a thousand miles begins with one step.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "11",
     "position": 11,
-    "title": "Note 11",
-    "text": "11 - Believe you can and you're halfway there."
+    "data": {
+      "title": "Note 11",
+      "text": "Believe you can and you're halfway there.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   },
   {
     "id": "12",
     "position": 12,
-    "title": "Note 12",
-    "text": "12 - The only limit to our realization of tomorrow will be our doubts of today."
+    "data": {
+      "title": "Note 12",
+      "text": "The only limit to our realization of tomorrow will be our doubts of today.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
   }
 ]

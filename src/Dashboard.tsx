@@ -1,35 +1,34 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 // Drag and drop
 import {
   DndContext,
   closestCenter,
+  DragOverlay,
+  useSensors,
+  useSensor,
   MouseSensor,
   TouchSensor,
-  DragOverlay,
-  useSensor,
-  useSensors,
-  DragStartEvent,
-  DragEndEvent,
 } from "@dnd-kit/core";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import {
-  arrayMove,
-  SortableContext,
-  rectSortingStrategy,
-} from "@dnd-kit/sortable";
+  handleDragStart,
+  handleDragEnd,
+  handleDragCancel,
+} from "./services/dndActions";
 
 // Components
 import { Grid } from "./components/Grid";
-import { Item } from "./components/Item";
-import { SortableItem } from "./components/SortableItem";
+import { Note } from "./components/Note";
+import { SortableNote } from "./components/SortableNote";
 
 // Data
 import strings from "./assets/strings.json";
 
-import { ItemType } from "./types/types";
+import { NoteType } from "./types/types";
 
 export function Dashboard() {
-  const [items, setItems] = useState<ItemType[]>(strings);
+  const [items, setItems] = useState<NoteType[]>(strings);
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const sensors = useSensors(
@@ -47,49 +46,33 @@ export function Dashboard() {
     })
   );
 
-  const handleDragStart = useCallback((event: DragStartEvent) => {
-    setActiveId(event.active.id.toString());
-  }, []);
-
-  const handleDragEnd = useCallback((event: DragEndEvent) => {
-    const { active, over } = event;
-    if (active.id !== over?.id) {
-      setItems((items) => {
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over!.id);
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-    setActiveId(null);
-  }, []);
-
-  const handleDragCancel = useCallback(() => {
-    setActiveId(null);
-  }, []);
-
   return (
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      onDragCancel={handleDragCancel}
+      onDragStart={handleDragStart(setActiveId)}
+      onDragEnd={handleDragEnd(setActiveId, setItems)}
+      onDragCancel={handleDragCancel(setActiveId)}
     >
       <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-64px)]">
         <SortableContext items={items} strategy={rectSortingStrategy}>
           <Grid>
             {items.map((item) => (
-              <SortableItem key={item.id} id={item.id} title={item.title} text={item.text} />
+              <SortableNote key={item.id} id={item.id} data={item.data} />
             ))}
           </Grid>
         </SortableContext>
 
         <DragOverlay style={{ transformOrigin: "0 0 " }}>
           {activeId ? (
-            <Item
+            <Note
               id={activeId}
-              title={items.find((item) => item.id == activeId)?.title || 'oops'}
-              text={items.find((item) => item.id == activeId)?.text || 'oops'}
+              data={
+                items.find((item) => item.id == activeId)?.data || {
+                  title: "",
+                  text: "",
+                }
+              }
               isDragging
             />
           ) : null}

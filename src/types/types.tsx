@@ -1,11 +1,14 @@
 import { HTMLAttributes } from "react";
 
-export type ItemType = {
+export type NoteType = {
   id: string;
   position?: number;
-  title: string;
-  text: string;
+  data: {
+    title: string;
+    text: string;
+    list?: string[];
+  };
   isDragging?: boolean;
 };
 
-export type ItemProps = ItemType & HTMLAttributes<HTMLDivElement>;
+export type NoteProps = NoteType & HTMLAttributes<HTMLDivElement>;
