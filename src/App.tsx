@@ -29,13 +29,9 @@ import strings from "./assets/strings.json";
 type ItemType = { id: string; text: string };
 
 export function App() {
-  // const [items, setItems] = useState(
-  //   Array.from({ length: 9 }, (_, i) => (i + 1).toString())
-  // );
   const [items, setItems] = useState<ItemType[]>(strings);
 
   const [activeId, setActiveId] = useState<string | null>(null);
-  console.log(activeId);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -85,8 +81,8 @@ export function App() {
           </Grid>
         </SortableContext>
 
-        <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
-          {activeId ? <Item id={activeId} isDragging /> : null}
+        <DragOverlay style={{ transformOrigin: "0 0 " }}>
+          {activeId ? <Item id={activeId} text={"pfff"} isDragging /> : null}
         </DragOverlay>
       </div>
     </DndContext>
