@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { useAppDispatch } from "../../hooks/store";
-
-import { addNote } from "../../store/notes.slice";
-
+// Components
 import Button from "../buttons/button";
 
+// State
+import { useAppDispatch } from "../../hooks/store";
+import { addNote } from "../../store/notes.slice";
+
+// Constants
 import { newNotePlaceholder } from "../../utils/placeholders";
 
 export function CreateNewNote() {
   const [type, setType] = useState<"note" | "list">("note");
   const [method, setMethod] = useState<"manual" | "ai">("ai");
-
-  const dispatch = useAppDispatch();
-
   const { register, handleSubmit, reset } = useForm();
+  const dispatch = useAppDispatch();
 
   const createNote = ({ input }: { input: string }) => {
     dispatch(

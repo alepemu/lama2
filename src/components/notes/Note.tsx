@@ -1,8 +1,11 @@
 import { forwardRef, CSSProperties } from "react";
-import { NoteProps } from "../../types";
 
+// State
 import { useAppDispatch } from "../../hooks/store";
 import { deleteNoteById } from "../../store/notes.slice";
+
+// Types
+import { NoteProps } from "../../types";
 
 const Note = forwardRef<HTMLDivElement, NoteProps>(
   ({ id, data, isDragging, style, ...props }, ref) => {
@@ -11,7 +14,6 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
     const inlineStyles: CSSProperties = {
       opacity: isDragging ? "0.75" : "1",
       border: isDragging ? "2px dashed white" : "",
-      // transformOrigin: "50% 50%", // ??
       cursor: isDragging ? "move" : "default",
       ...style,
     };
@@ -31,7 +33,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
         </button>
         <div>
           <h1 className="break-words font-bold text-xl">{data.title}</h1>
-          {/* <p>{data.text}</p> */}
+          <p>{data.text}</p>
           {/* <ul>
           {data.list?.map((item, index) => (
             <li key={index}>{item}</li>

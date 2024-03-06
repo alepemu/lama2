@@ -11,12 +11,12 @@ import {
   TouchSensor,
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
+import { mouseActivation, touchActivation } from "../../utils/dndSensors";
 import {
   handleDragStart,
   handleDragEnd,
   handleDragCancel,
 } from "../../services/dndActions";
-import { mouseActivation, touchActivation } from "../../utils/dndSensors";
 
 // Components
 import { Grid } from "./Grid";
@@ -65,7 +65,7 @@ export function Dashboard() {
             </Grid>
           </SortableContext>
 
-          <DragOverlay /*style={{ transformOrigin: "0 0 " }}*/>
+          <DragOverlay>
             {activeId ? (
               <Note
                 id={activeId}
