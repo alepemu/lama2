@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 import { Navbar } from "./components/Navbar.tsx";
 import { Dashboard } from "./Dashboard";
 
 import "./index.css";
-
-import { store } from "./store";
-import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
