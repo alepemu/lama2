@@ -25,7 +25,7 @@ import { SortableNote } from "./components/SortableNote";
 
 // State
 import { useAppSelector, useAppDispatch } from "./hooks/store";
-import { addNote, updateNotesOrder } from "./store/notes/slice";
+import { updateNotesOrder } from "./store/notes/slice";
 
 // Types
 import { NoteType } from "./types/types";
@@ -45,14 +45,8 @@ export function Dashboard() {
     dispatch(updateNotesOrder(items));
   };
 
-  const handleNewNote = () => {
-    // @ts-ignore
-    dispatch(addNote({ data: { title: "New note", text: "New note text" } }));
-  };
-
   return (
     <>
-      <button onClick={handleNewNote}>New</button>
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -60,7 +54,7 @@ export function Dashboard() {
         onDragEnd={handleDragEnd(setActiveId, handleRearrangeNotes, items)}
         onDragCancel={handleDragCancel(setActiveId)}
       >
-        <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-64px)]">
+        <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-128px)]">
           <SortableContext items={items} strategy={rectSortingStrategy}>
             <Grid>
               {items.map((item) => (
