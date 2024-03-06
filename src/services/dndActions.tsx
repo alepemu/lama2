@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { NoteType } from "../types/types";
+import { NoteType } from "../types";
 
 const handleDragStart = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>
@@ -12,7 +12,7 @@ const handleDragStart = (
 
 const handleDragEnd = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>,
-  handleRearrangeNotes: (items: NoteType[]) => void,
+  arrangeNotes: (items: NoteType[]) => void,
   items: NoteType[]
 ) =>
   useCallback(
@@ -21,7 +21,7 @@ const handleDragEnd = (
       if (active.id !== over?.id) {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over!.id);
-        handleRearrangeNotes(arrayMove(items, oldIndex, newIndex));
+        arrangeNotes(arrayMove(items, oldIndex, newIndex));
       }
       setActiveId(null);
     },

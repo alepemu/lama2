@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { Note } from "./Note";
-import { NoteProps } from "../types/types";
+import { NoteProps } from "../../types";
 
 const SortableNote: FC<NoteProps> = (props) => {
   const { isOver, attributes, listeners, setNodeRef } = useSortable({

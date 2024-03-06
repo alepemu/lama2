@@ -1,19 +1,17 @@
 import strings from "../../assets/strings.json";
-import { NoteType } from "../../types/types";
+import { NoteType } from "../../types";
 
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState: NoteType[] = strings;
-
 export const notesSlice = createSlice({
   name: "notes",
-  initialState,
+  initialState: strings as NoteType[],
   reducers: {
     updateNotesOrder: (_, action: PayloadAction<NoteType[]>) => {
       return action.payload;
     },
     addNote: (state, action: PayloadAction<NoteType>) => {
-      const id = crypto.randomUUID();
+      const id = Date.now().toString();
       const { title, text } = action.payload.data;
       return [{ data: { title, text }, id }, ...state];
     },

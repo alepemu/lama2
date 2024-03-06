@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { useSize } from "../hooks/useSize";
-import constants from "../utils/constants";
+
+import { useSize } from "../../hooks/useSize";
 
 export function Grid({ children }: { children: ReactNode }) {
   const [sizeRef, size] = useSize({ px: 32 });
-  const columns = Math.floor(size.width / constants.itemMinWidth);
+  const columns = Math.floor(size.width / 320);
 
   return (
     <div

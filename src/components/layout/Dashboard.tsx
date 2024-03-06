@@ -15,24 +15,24 @@ import {
   handleDragStart,
   handleDragEnd,
   handleDragCancel,
-} from "./services/dndActions";
-import { mouseActivation, touchActivation } from "./utils/dndSensors";
+} from "../../services/dndActions";
+import { mouseActivation, touchActivation } from "../../utils/dndSensors";
 
 // Components
-import { Grid } from "./components/Grid";
-import { Note } from "./components/Note";
-import { SortableNote } from "./components/SortableNote";
+import { Grid } from "./Grid";
+import { Note } from "../notes/Note";
+import { SortableNote } from "../notes/SortableNote";
 
 // State
-import { useAppSelector, useAppDispatch } from "./hooks/store";
-import { updateNotesOrder } from "./store/notes/slice";
+import { useAppSelector, useAppDispatch } from "../../hooks/store";
+import { updateNotesOrder } from "../../store/notes/slice";
 
 // Types
-import { NoteType } from "./types/types";
+import { NoteType } from "../../types";
 
 export function Dashboard() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const items = useAppSelector((state) => state.notes);
+  const notes = useAppSelector((state) => state.notes);
 
   const sensors = useSensors(
     useSensor(MouseSensor, mouseActivation),
@@ -40,9 +40,11 @@ export function Dashboard() {
   );
 
   const dispatch = useAppDispatch();
+  const arrangeNotes = (notes: NoteType[]) => dispatch(updateNotesOrder(notes));
 
-  const handleRearrangeNotes = (items: NoteType[]) => {
-    dispatch(updateNotesOrder(items));
+  const missingNote = {
+    title: "Error",
+    text: "Missing note and/or data",
   };
 
   return (
@@ -51,27 +53,24 @@ export function Dashboard() {
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragStart={handleDragStart(setActiveId)}
-        onDragEnd={handleDragEnd(setActiveId, handleRearrangeNotes, items)}
+        onDragEnd={handleDragEnd(setActiveId, arrangeNotes, notes)}
         onDragCancel={handleDragCancel(setActiveId)}
       >
-        <div className="overflow-clip bg-zinc-900 min-h-[calc(100vh-128px)]">
-          <SortableContext items={items} strategy={rectSortingStrategy}>
+        <div className="overflow-clip min-h-[calc(100vh-176px)] lg:min-h-[calc(100vh-128px)]">
+          <SortableContext items={notes} strategy={rectSortingStrategy}>
             <Grid>
-              {items.map((item) => (
-                <SortableNote key={item.id} id={item.id} data={item.data} />
+              {notes.map((note) => (
+                <SortableNote key={note.id} id={note.id} data={note.data} />
               ))}
             </Grid>
           </SortableContext>
 
-          <DragOverlay style={{ transformOrigin: "0 0 " }}>
+          <DragOverlay /*style={{ transformOrigin: "0 0 " }}*/>
             {activeId ? (
               <Note
                 id={activeId}
                 data={
-                  items.find((item) => item.id == activeId)?.data || {
-                    title: "",
-                    text: "",
-                  }
+                  notes.find((note) => note.id == activeId)?.data || missingNote
                 }
                 isDragging
               />
