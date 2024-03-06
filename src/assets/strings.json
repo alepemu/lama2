@@ -1,5 +1,94 @@
 [
-  
+  {
+    "id": "1",
+    "position": 1,
+    "data": {
+      "title": "Note 1",
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "2",
+    "position": 2,
+    "data": {
+      "title": "Note 2",
+      "text": "The cat sat on the mat.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "3",
+    "position": 3,
+    "data": {
+      "title": "Note 3",
+      "text": "I love to explore new places and try different foods.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "4",
+    "position": 4,
+    "data": {
+      "title": "Note 4",
+      "text": "Learning a new language opens up a world of possibilities.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "5",
+    "position": 5,
+    "data": {
+      "title": "Note 5",
+      "text": "Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "6",
+    "position": 6,
+    "data": {
+      "title": "Note 6",
+      "text": "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "7",
+    "position": 7,
+    "data": {
+      "title": "Note 7",
+      "text": "The only way to do great work is to love what you do.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "8",
+    "position": 8,
+    "data": {
+      "title": "Note 8",
+      "text": "In the middle of difficulty lies opportunity.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "9",
+    "position": 9,
+    "data": {
+      "title": "Note 9",
+      "text": "Happiness is not something ready-made. It comes from your own actions. Happiness is not something ready-made. It comes from your own actions.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
+  {
+    "id": "10",
+    "position": 10,
+    "data": {
+      "title": "Note 10",
+      "text": "The journey of a thousand miles begins with one step.",
+      "list": ["1 - abc", "2 - abc", "3 - abc", "4 - abc"]
+    }
+  },
   {
     "id": "11",
     "position": 11,

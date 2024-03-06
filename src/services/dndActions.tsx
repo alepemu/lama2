@@ -12,19 +12,21 @@ const handleDragStart = (
 
 const handleDragEnd = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>,
-  setItems: React.Dispatch<React.SetStateAction<NoteType[]>>
+  handleRearrangeNotes: (items: NoteType[]) => void,
+  items: NoteType[]
 ) =>
-  useCallback((event: DragEndEvent) => {
-    const { active, over } = event;
-    if (active.id !== over?.id) {
-      setItems((items) => {
+  useCallback(
+    (event: DragEndEvent) => {
+      const { active, over } = event;
+      if (active.id !== over?.id) {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over!.id);
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-    setActiveId(null);
-  }, []);
+        handleRearrangeNotes(arrayMove(items, oldIndex, newIndex));
+      }
+      setActiveId(null);
+    },
+    [items]
+  );
 
 const handleDragCancel = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>

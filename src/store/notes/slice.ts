@@ -15,7 +15,7 @@ export const notesSlice = createSlice({
     addNote: (state, action: PayloadAction<NoteType>) => {
       const id = crypto.randomUUID();
       const { title, text } = action.payload.data;
-      return [...state, { data: { title, text }, id }];
+      return [{ data: { title, text }, id }, ...state];
     },
     deleteNoteById: (state, action: PayloadAction<string>) => {
       const id = action.payload;
