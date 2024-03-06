@@ -9,8 +9,13 @@ export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    rearrangeNotes: (state, action: PayloadAction<NoteType[]>) => {
+    updateNotesOrder: (_, action: PayloadAction<NoteType[]>) => {
       return action.payload;
+    },
+    addNote: (state, action: PayloadAction<NoteType>) => {
+      const id = crypto.randomUUID();
+      const { title, text } = action.payload.data;
+      return [...state, { data: { title, text }, id }];
     },
     deleteNoteById: (state, action: PayloadAction<string>) => {
       const id = action.payload;
@@ -21,4 +26,4 @@ export const notesSlice = createSlice({
 
 export default notesSlice.reducer;
 
-export const { rearrangeNotes, deleteNoteById } = notesSlice.actions;
+export const { updateNotesOrder, addNote, deleteNoteById } = notesSlice.actions;

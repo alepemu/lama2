@@ -32,7 +32,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
           className="bg-red-100/50 w-full text-red-700 font-bold cursor-pointer z-100"
           onClick={handleDeleteNote}
         >
-          X
+          DEL
         </button>
         <h1 className="font-bold text-xl">{data.title}</h1>
         <p>{data.text}</p>
