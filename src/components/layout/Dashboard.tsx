@@ -25,7 +25,7 @@ import { SortableNote } from "../notes/SortableNote";
 
 // State
 import { useAppSelector, useAppDispatch } from "../../hooks/store";
-import { updateNotesOrder } from "../../store/notes/slice";
+import { updateNotesOrder } from "../../store/notes.slice";
 
 // Types
 import { NoteType } from "../../types";

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { useAppDispatch } from "../../hooks/store";
 
-import { addNote } from "../../store/notes/slice";
+import { addNote } from "../../store/notes.slice";
 
 import Button from "../buttons/button";
 

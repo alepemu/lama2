@@ -1,0 +1,30 @@
+[
+  {
+    "data": {
+      "title": "Note 1",
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
+    },
+    "id": "1"
+  },
+  {
+    "data": {
+      "title": "Note 2",
+      "text": "The cat sat on the mat."
+    },
+    "id": "2"
+  },
+  {
+    "data": {
+      "title": "Note 3",
+      "text": "I love to explore new places and try different foods."
+    },
+    "id": "3"
+  },
+  {
+    "data": {
+      "title": "Note 4",
+      "text": "Learning a new language opens up a world of possibilities."
+    },
+    "id": "4"
+  }
+]
