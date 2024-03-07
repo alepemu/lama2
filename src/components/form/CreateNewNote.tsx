@@ -18,13 +18,15 @@ export function CreateNewNote() {
   const dispatch = useAppDispatch();
 
   const createNote = ({ input }: { input: string }) => {
-    dispatch(
-      addNote({
-        id: "temp",
-        data: { title: input, text: "New note text" },
-      })
-    );
-    reset();
+    setTimeout(() => {
+      dispatch(
+        addNote({
+          id: "temp",
+          data: { title: input, text: "New note text" },
+        })
+      );
+      reset();
+    }, 3000);
   };
 
   return (
