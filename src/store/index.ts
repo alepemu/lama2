@@ -1,6 +1,7 @@
 import { configureStore, Middleware } from "@reduxjs/toolkit";
 
 import notesReducer from "./notes.slice";
+import loadingReducer from "./loading.slice";
 
 const persistanceLocalStorageMiddleware: Middleware =
   (store) => (next) => (action) => {
@@ -11,6 +12,7 @@ const persistanceLocalStorageMiddleware: Middleware =
 export const store = configureStore({
   reducer: {
     notes: notesReducer,
+    loading: loadingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(persistanceLocalStorageMiddleware),

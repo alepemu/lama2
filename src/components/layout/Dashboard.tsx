@@ -33,7 +33,7 @@ import { NoteType } from "../../types";
 
 export function Dashboard() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [noteLoading, setNoteLoading] = useState<boolean>(false);
+  const loading = useAppSelector((state) => state.loading);
   const notes = useAppSelector((state) => state.notes);
 
   const sensors = useSensors(
@@ -61,7 +61,7 @@ export function Dashboard() {
         <div className="overflow-clip min-h-[calc(100vh-176px)] lg:min-h-[calc(100vh-128px)]">
           <SortableContext items={notes} strategy={rectSortingStrategy}>
             <Grid>
-              {noteLoading && <LoadingNote />}
+              {loading && <LoadingNote />}
               {notes.map((note) => (
                 <SortableNote key={note.id} id={note.id} data={note.data} />
               ))}

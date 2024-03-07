@@ -7,6 +7,7 @@ import Button from "../buttons/button";
 // State
 import { useAppDispatch } from "../../hooks/store";
 import { addNote } from "../../store/notes.slice";
+import { toogleLoading } from "../../store/loading.slice";
 
 // Constants
 import { newNotePlaceholder } from "../../utils/placeholders";
@@ -18,6 +19,7 @@ export function CreateNewNote() {
   const dispatch = useAppDispatch();
 
   const createNote = ({ input }: { input: string }) => {
+    dispatch(toogleLoading(true));
     setTimeout(() => {
       dispatch(
         addNote({
@@ -25,6 +27,7 @@ export function CreateNewNote() {
           data: { title: input, text: "New note text" },
         })
       );
+      dispatch(toogleLoading(false));
       reset();
     }, 3000);
   };
