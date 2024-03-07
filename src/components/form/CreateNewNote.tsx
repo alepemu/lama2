@@ -20,11 +20,42 @@ export function CreateNewNote() {
 
   const createNote = ({ input }: { input: string }) => {
     dispatch(toogleLoading(true));
+    // fetch("http://localhost:3000/test")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     dispatch(
+    //       addNote({
+    //         id: "temp",
+    //         data: { title: data.title, text: data.text },
+    //       })
+    //     );
+    //     dispatch(toogleLoading(false));
+    //   });
+    /////
+    // fetch("http://localhost:3000/ai-test", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ input, type, method }), // data can be `string` or {object}!
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     dispatch(
+    //       addNote({
+    //         id: "temp-ai",
+    //         data: { title: data.title, text: data.text },
+    //       })
+    //     );
+    //     dispatch(toogleLoading(false));
+    //   });
+    /////
     setTimeout(() => {
       dispatch(
         addNote({
           id: "temp",
-          data: { title: input, text: "New note text" },
+          data: { title: input, text: type + '-' + method },
         })
       );
       dispatch(toogleLoading(false));

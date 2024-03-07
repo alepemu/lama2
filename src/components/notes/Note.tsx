@@ -39,7 +39,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
             <li key={index}>{item}</li>
           ))}
         </ul> */}
-          <p className="italic opacity-50">Id: {id}</p>
+          {/* <p className="italic opacity-50">Id: {id}</p> */}
         </div>
       </div>
     );
