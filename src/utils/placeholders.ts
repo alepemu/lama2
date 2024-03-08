@@ -1,4 +1,4 @@
-  const newNotePlaceholder = {
+  const noteInputText = {
     note: {
       manual: "e.g. Note to remember...",
       ai: "e.g. definition of closure...",
@@ -9,4 +9,9 @@
     },
   };
 
-export { newNotePlaceholder };
+  const missingNote = {
+    title: "Error",
+    text: "Missing note and/or data",
+  };
+
+export { noteInputText, missingNote };

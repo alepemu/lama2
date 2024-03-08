@@ -1,11 +1,8 @@
 import { FC } from "react";
-
 // Drag and drop
 import { useSortable } from "@dnd-kit/sortable";
-
 // Components
 import { Note } from "./Note";
-
 // Types
 import { NoteProps } from "../../types";
 

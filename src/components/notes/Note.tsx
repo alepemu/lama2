@@ -1,9 +1,7 @@
 import { forwardRef, CSSProperties } from "react";
-
 // State
 import { useAppDispatch } from "../../hooks/store";
 import { deleteNoteById } from "../../store/notes.slice";
-
 // Types
 import { NoteProps } from "../../types";
 
@@ -20,16 +18,16 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
 
     return (
       <div
-        className="relative min-w-80 overflow-hidden bg-stone-700 p-4 rounded-xl text-white border-2 border-white/25"
+        className="relative min-w-80 overflow-hidden bg-gradient-to-br from-stone-600 to-stone-700 p-4 rounded-xl text-white border-2 border-white/25"
         ref={ref}
         style={inlineStyles}
         {...props}
       >
         <button
-          className="absolute top-1 right-2 text-red-300 opacity-50 cursor-pointer"
+          className="absolute top-0 right-2 text-red-300/25 cursor-pointer"
           onClick={() => dispatch(deleteNoteById(id))}
         >
-          X
+          x
         </button>
         <div>
           <h1 className="break-words font-bold text-xl">{data.title}</h1>

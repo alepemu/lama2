@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 // Drag and drop
 import {
   DndContext,
@@ -17,19 +16,17 @@ import {
   handleDragEnd,
   handleDragCancel,
 } from "../../services/dndActions";
-
 // Components
 import { Grid } from "./Grid";
 import { Note } from "../notes/Note";
 import { SortableNote } from "../notes/SortableNote";
 import { LoadingNote } from "../notes/LoadingNote";
-
 // State
 import { useAppSelector, useAppDispatch } from "../../hooks/store";
 import { updateNotesOrder } from "../../store/notes.slice";
-
 // Types
 import { NoteType } from "../../types";
+import { missingNote } from "../../utils/placeholders";
 
 export function Dashboard() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -44,11 +41,6 @@ export function Dashboard() {
   const dispatch = useAppDispatch();
   const arrangeNotes = (notes: NoteType[]) => dispatch(updateNotesOrder(notes));
 
-  const missingNote = {
-    title: "Error",
-    text: "Missing note and/or data",
-  };
-
   return (
     <>
       <DndContext
@@ -58,7 +50,7 @@ export function Dashboard() {
         onDragEnd={handleDragEnd(setActiveId, arrangeNotes, notes)}
         onDragCancel={handleDragCancel(setActiveId)}
       >
-        <div className="overflow-clip min-h-[calc(100vh-176px)] lg:min-h-[calc(100vh-128px)]">
+        <div className="overflow-clip min-h-[calc(100vh-160px)] lg:min-h-[calc(100vh-112px)]">
           <SortableContext items={notes} strategy={rectSortingStrategy}>
             <Grid>
               {loading && <LoadingNote />}

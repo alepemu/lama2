@@ -13,7 +13,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={cn(
           className,
-          "border-2 border-white/25 px-3 py-0.5 rounded-xl ",
+          "border-2 border-white/25 px-3 py-0.5 rounded-xl"
         )}
         ref={ref}
         {...props}
