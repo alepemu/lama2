@@ -23,13 +23,39 @@ export function CreateNewNote() {
 
     const input = formData.get("input") as string;
 
-    let delay = 0;
-    if (method === "ai") {
-      delay = 3000;
-      dispatch(toggleLoading(true));
-    }
+    dispatch(toggleLoading(true));
 
-    setTimeout(() => {
+    if (method === "ai") {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: input }),
+      };
+      fetch("https://lama2-server-dev-zkht.2.ie-1.fl0.io/ai-test", options)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (typeof data === "string") {
+            dispatch(
+              addNote({
+                id: "temp",
+                data: { title: input, text: data },
+              })
+            );
+          } else {
+            dispatch(
+              addNote({
+                id: "temp",
+                data: { title: input, text: "Error" },
+              })
+            );
+          }
+          dispatch(toggleLoading(false));
+          form.reset();
+        });
+    } else if (method === "manual") {
       dispatch(
         addNote({
           id: "temp",
@@ -37,9 +63,8 @@ export function CreateNewNote() {
         })
       );
       dispatch(toggleLoading(false));
-    }, delay);
-
-    form.reset()
+      form.reset();
+    }
   };
 
   return (
