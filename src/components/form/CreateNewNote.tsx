@@ -1,16 +1,13 @@
 import { useState, FormEvent } from "react";
-
 // Components
+import { NoteOptions } from "./NoteOptions";
 import Button from "../buttons/button";
-
 // State
 import { useAppDispatch } from "../../hooks/store";
 import { addNote } from "../../store/notes.slice";
 import { toggleLoading } from "../../store/loading.slice";
-
 // Types
 import { NoteMethods, NoteTypes } from "../../types";
-
 // Constants
 import { newNotePlaceholder } from "../../utils/placeholders";
 
@@ -46,34 +43,12 @@ export function CreateNewNote() {
   return (
     <>
       <div className="h-28 lg:h-16 py-4 text-white flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-10">
-        <div className="flex justify-center items-center gap-2">
-          <p>Add</p>
-          <Button
-            onClick={() => setType("note")}
-            className={`${type === "note" ? "bg-teal-600" : ""}`}
-          >
-            note
-          </Button>
-          <Button
-            onClick={() => setType("list")}
-            className={`${type === "list" ? "bg-teal-600" : ""}`}
-          >
-            list
-          </Button>
-          <p>from</p>
-          <Button
-            onClick={() => setMethod("manual")}
-            className={`${method === "manual" ? "bg-amber-600" : ""}`}
-          >
-            input
-          </Button>
-          <Button
-            onClick={() => setMethod("ai")}
-            className={`${method === "ai" ? "bg-amber-600" : ""}`}
-          >
-            AI
-          </Button>
-        </div>
+        <NoteOptions
+          type={type}
+          method={method}
+          setType={setType}
+          setMethod={setMethod}
+        />
         <div>
           <form
             onSubmit={handleSubmit}
@@ -85,8 +60,8 @@ export function CreateNewNote() {
               placeholder={newNotePlaceholder[type][method]}
               className="bg-transparent py-1 px-2 border-b-2 border-white/50 focus:outline-none"
             />
-            <Button type="submit" className="bg-white/25">
-              +
+            <Button type="submit" className="bg-white/25 font-bold">
+              ＋
             </Button>
           </form>
         </div>
