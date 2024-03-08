@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState, FormEvent } from "react";
 
 // Components
 import Button from "../buttons/button";
@@ -7,60 +6,41 @@ import Button from "../buttons/button";
 // State
 import { useAppDispatch } from "../../hooks/store";
 import { addNote } from "../../store/notes.slice";
-import { toogleLoading } from "../../store/loading.slice";
+import { toggleLoading } from "../../store/loading.slice";
+
+// Types
+import { NoteMethods, NoteTypes } from "../../types";
 
 // Constants
 import { newNotePlaceholder } from "../../utils/placeholders";
 
 export function CreateNewNote() {
-  const [type, setType] = useState<"note" | "list">("note");
-  const [method, setMethod] = useState<"manual" | "ai">("ai");
-  const { register, handleSubmit, reset } = useForm();
+  const [type, setType] = useState<NoteTypes>("note");
+  const [method, setMethod] = useState<NoteMethods>("ai");
   const dispatch = useAppDispatch();
 
-  const createNote = ({ input }: { input: string }) => {
-    dispatch(toogleLoading(true));
-    // fetch("http://localhost:3000/test")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     dispatch(
-    //       addNote({
-    //         id: "temp",
-    //         data: { title: data.title, text: data.text },
-    //       })
-    //     );
-    //     dispatch(toogleLoading(false));
-    //   });
-    /////
-    // fetch("http://localhost:3000/ai-test", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ input, type, method }), // data can be `string` or {object}!
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     dispatch(
-    //       addNote({
-    //         id: "temp-ai",
-    //         data: { title: data.title, text: data.text },
-    //       })
-    //     );
-    //     dispatch(toogleLoading(false));
-    //   });
-    /////
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const input = formData.get("input") as string;
+
+    let delay = 0;
+    if (method === "ai") {
+      delay = 3000;
+      dispatch(toggleLoading(true));
+    }
+
     setTimeout(() => {
       dispatch(
         addNote({
           id: "temp",
-          data: { title: input, text: type + '-' + method },
+          data: { title: input, text: type + "-" + method },
         })
       );
-      dispatch(toogleLoading(false));
-      reset();
-    }, 3000);
+      dispatch(toggleLoading(false));
+    }, delay);
   };
 
   return (
@@ -96,11 +76,11 @@ export function CreateNewNote() {
         </div>
         <div>
           <form
-            onSubmit={handleSubmit(({ input }) => createNote({ input }))}
+            onSubmit={handleSubmit}
             className="flex justify-center items-center gap-2"
           >
             <input
-              {...register("input", { required: true })}
+              name="input"
               type="text"
               placeholder={newNotePlaceholder[type][method]}
               className="bg-transparent py-1 px-2 border-b-2 border-white/50 focus:outline-none"

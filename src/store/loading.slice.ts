@@ -4,7 +4,7 @@ export const loadingSlice = createSlice({
   name: "loading",
   initialState: false,
   reducers: {
-    toogleLoading: (_, action: PayloadAction<boolean>) => {
+    toggleLoading: (_, action: PayloadAction<boolean>) => {
       return action.payload;
     },
   },
@@ -12,4 +12,4 @@ export const loadingSlice = createSlice({
 
 export default loadingSlice.reducer;
 
-export const { toogleLoading } = loadingSlice.actions;
+export const { toggleLoading } = loadingSlice.actions;

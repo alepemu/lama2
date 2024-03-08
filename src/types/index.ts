@@ -12,3 +12,6 @@ export type NoteType = {
 };
 
 export type NoteProps = NoteType & HTMLAttributes<HTMLDivElement>;
+
+export type NoteTypes = "note" | "list";
+export type NoteMethods = "manual" | "ai";
