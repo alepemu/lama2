@@ -13,7 +13,7 @@ import { noteInputText } from "../../utils/placeholders";
 
 export function CreateNewNote() {
   const [type, setType] = useState<NoteTypes>("note");
-  const [method, setMethod] = useState<NoteMethods>("ai");
+  const [method, setMethod] = useState<NoteMethods>("manual");
   const dispatch = useAppDispatch();
 
   const handleSubmit = (event: FormEvent) => {
@@ -31,9 +31,9 @@ export function CreateNewNote() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ query: input }),
+        body: JSON.stringify({ query: input, type }),
       };
-      fetch("https://lama2-server-dev-zkht.2.ie-1.fl0.io/ai-test", options)
+      fetch(import.meta.env.VITE_APP_API_URL + "/ai-test", options)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -56,6 +56,8 @@ export function CreateNewNote() {
           form.reset();
         });
     } else if (method === "manual") {
+      console.log(import.meta.env.VITE_APP_API_URL);
+
       dispatch(
         addNote({
           id: "temp",
