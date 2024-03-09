@@ -41,14 +41,14 @@ export function CreateNewNote() {
             dispatch(
               addNote({
                 id: "temp",
-                data: { title: input, text: data },
+                data: { title: input, text: data, typeId: 0 },
               })
             );
           } else {
             dispatch(
               addNote({
                 id: "temp",
-                data: { title: input, text: "Error" },
+                data: { title: input, text: "Error", typeId: 0 },
               })
             );
           }
@@ -56,12 +56,17 @@ export function CreateNewNote() {
           form.reset();
         });
     } else if (method === "manual") {
-      console.log(import.meta.env.VITE_APP_API_URL);
-
       dispatch(
         addNote({
           id: "temp",
-          data: { title: input, text: type + "-" + method },
+          data:
+            type === "note"
+              ? { title: input, text: type + "-" + method, typeId: 0 }
+              : {
+                  title: input,
+                  list: Array(3).fill(type + "-" + method),
+                  typeId: 1,
+                },
         })
       );
       dispatch(toggleLoading(false));

@@ -18,7 +18,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
 
     return (
       <div
-        className="relative min-w-80 overflow-hidden bg-gradient-to-br from-stone-600 to-stone-700 p-4 rounded-xl text-white border-2 border-white/25"
+        className="relative min-w-80 overflow-hidden bg-gradient-to-br from-stone-600 to-stone-700 px-4 py-2 rounded-xl text-white border-2 border-white/25"
         ref={ref}
         style={inlineStyles}
         {...props}
@@ -31,13 +31,16 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
         </button>
         <div>
           <h1 className="break-words font-bold text-xl">{data.title}</h1>
-          <p>{data.text}</p>
-          {/* <ul>
-          {data.list?.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul> */}
-          {/* <p className="italic opacity-50">Id: {id}</p> */}
+          {data.typeId === 0 ? (
+            <p>{data.text}</p>
+          ) : (
+            <ul className="list-disc ml-4">
+              {data.list?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+          <p className="text-right text-xs italic opacity-50">id-{id}</p>
         </div>
       </div>
     );

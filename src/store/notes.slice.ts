@@ -23,8 +23,8 @@ export const notesSlice = createSlice({
     },
     addNote: (state, action: PayloadAction<NoteType>) => {
       const id = Date.now().toString();
-      const { title, text } = action.payload.data;
-      return [{ data: { title, text }, id }, ...state];
+      const { title, text, list, typeId } = action.payload.data;
+      return [{ data: { title, text, list, typeId }, id }, ...state];
     },
     deleteNoteById: (state, action: PayloadAction<string>) => {
       const id = action.payload;

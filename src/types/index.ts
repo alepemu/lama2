@@ -4,8 +4,9 @@ export type NoteType = {
   id: string;
   position?: number;
   data: {
+    typeId: number;
     title: string;
-    text: string;
+    text?: string;
     list?: string[];
   };
   isDragging?: boolean;
