@@ -10,6 +10,7 @@
   };
 
   const missingNote = {
+    typeId: 0,
     title: "Error",
     text: "Missing note and/or data",
   };
