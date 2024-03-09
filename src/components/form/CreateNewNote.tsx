@@ -36,12 +36,18 @@ export function CreateNewNote() {
       fetch(import.meta.env.VITE_APP_API_URL + "/ai-test", options)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (typeof data === "string") {
             dispatch(
               addNote({
                 id: "temp",
                 data: { title: input, text: data, typeId: 0 },
+              })
+            );
+          } else if (typeof data === "object") {
+            dispatch(
+              addNote({
+                id: "temp",
+                data: { title: input, list: data, typeId: 1 },
               })
             );
           } else {
