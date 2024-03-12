@@ -25,20 +25,20 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const handleEdit = (event: React.FormEvent) => {
     event.preventDefault();
     const data = { title, text, typeId };
-    dispatch(updateNoteById({ id, data }));
+    if (title === "" && text === "") dispatch(deleteNoteById(id));
+    else dispatch(updateNoteById({ id, data }));
     close();
   };
 
   const handleDelete = () => {
     dispatch(deleteNoteById(id));
     close();
-  }
+  };
 
   return (
     <DialogContent
       className="w-5/6 bg-gradient-to-br from-stone-600 to-stone-700 text-white border-2 border-white/25"
       onInteractOutside={(event) => {
-        event.preventDefault();
         handleEdit(event as any);
       }}
     >

@@ -15,7 +15,7 @@ const NoteOutside = ({ id, data }: NoteBasicProps) => {
           </ul>
         )}
       </div>
-      <p className="text-right text-xs italic opacity-50">id-{id}</p>
+      {/* <p className="text-right text-xs italic opacity-50">id-{id}</p> */}
     </div>
   );
 };

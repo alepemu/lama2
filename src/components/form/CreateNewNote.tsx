@@ -52,7 +52,7 @@ export function CreateNewNote() {
         addNote({
           data:
             type === "note"
-              ? { title: input, text: type + "-" + method, typeId: 0 }
+              ? { title: input, text: "", typeId: 0 }
               : {
                   title: input,
                   list: Array(3).fill(type + "-" + method),
