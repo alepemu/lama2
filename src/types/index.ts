@@ -13,6 +13,9 @@ export type NoteBasicProps = {
   id: string;
   data: NoteInputType["data"];
 };
+export type NoteOpenProps = NoteBasicProps & {
+  close: () => void;
+};
 
 export type NoteType = NoteInputType & {
   id: string;
