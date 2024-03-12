@@ -9,6 +9,11 @@ export type NoteInputType = {
   };
 };
 
+export type NoteBasicProps = {
+  id: string;
+  data: NoteInputType["data"];
+};
+
 export type NoteType = NoteInputType & {
   id: string;
   isDragging?: boolean;

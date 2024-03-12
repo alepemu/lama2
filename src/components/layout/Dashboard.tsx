@@ -20,7 +20,7 @@ import {
 import { Grid } from "./Grid";
 import { Note } from "../notes/Note";
 import { SortableNote } from "../notes/SortableNote";
-import { LoadingNote } from "../notes/LoadingNote";
+import { NoteLoading } from "../notes/NoteLoading";
 // State
 import { useAppSelector, useAppDispatch } from "@/hooks/store";
 import { updateNotesOrder } from "@/store/notes.slice";
@@ -53,7 +53,7 @@ export function Dashboard() {
         <div className="overflow-clip min-h-[calc(100vh-160px)] lg:min-h-[calc(100vh-112px)]">
           <SortableContext items={notes} strategy={rectSortingStrategy}>
             <Grid>
-              {loading && <LoadingNote />}
+              {loading && <NoteLoading />}
               {notes.map((note) => (
                 <SortableNote key={note.id} id={note.id} data={note.data} />
               ))}
