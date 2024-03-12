@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 
 export type NoteType = {
-  id: string;
+  id?: string;
   position?: number;
   data: {
     typeId: number;
