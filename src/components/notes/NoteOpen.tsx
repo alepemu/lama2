@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 // State
 import { useAppDispatch } from "@/hooks/store";
-import { updateNoteById } from "@/store/notes.slice";
+import { updateNoteById, deleteNoteById } from "@/store/notes.slice";
 // Components
 import Button from "@/components/buttons/button";
 import {
@@ -14,28 +14,35 @@ import {
 // Types
 import { NoteOpenProps } from "@/types";
 
+import { Palette, Trash2 } from "lucide-react";
+
 export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
   const [title, setTitle] = useState(data.title);
   const [text, setText] = useState(data.text);
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleEdit = (event: React.FormEvent) => {
     event.preventDefault();
     const data = { title, text, typeId };
     dispatch(updateNoteById({ id, data }));
     close();
   };
 
+  const handleDelete = () => {
+    dispatch(deleteNoteById(id));
+    close();
+  }
+
   return (
     <DialogContent
       className="w-5/6 bg-gradient-to-br from-stone-600 to-stone-700 text-white border-2 border-white/25"
       onInteractOutside={(event) => {
         event.preventDefault();
-        handleSubmit(event as any);
+        handleEdit(event as any);
       }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleEdit}>
         <DialogHeader>
           <DialogTitle>
             <input
@@ -61,7 +68,13 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button type="submit" className="bg-cyan-600">
+          <Button className="bg-black/50 !px-1" onClick={handleDelete}>
+            <Trash2 className="h-4 text-white/75" />
+          </Button>
+          <Button className="bg-emerald-600/50 !px-1">
+            <Palette className="h-4 text-white/75" />
+          </Button>
+          <Button type="submit" className="bg-rose-500">
             Save
           </Button>
         </DialogFooter>
