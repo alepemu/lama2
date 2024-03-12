@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { NoteType } from "../types";
+import { NoteType } from "@/types";
 
 const handleDragStart = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>

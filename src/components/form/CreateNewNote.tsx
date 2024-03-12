@@ -3,14 +3,14 @@ import { useState, FormEvent } from "react";
 import { NoteOptions } from "./NoteOptions";
 import Button from "../buttons/button";
 // State
-import { useAppDispatch } from "../../hooks/store";
-import { addNote } from "../../store/notes.slice";
-import { toggleLoading } from "../../store/loading.slice";
+import { useAppDispatch } from "@/hooks/store";
+import { addNote } from "@/store/notes.slice";
+import { toggleLoading } from "@/store/loading.slice";
 // Types
-import { NoteMethods, NoteTypes } from "../../types";
+import { NoteMethods, NoteTypes } from "@/types";
 // Constants
-import { noteInputText } from "../../utils/placeholders";
-import { apiFetch } from "../../utils/api";
+import { noteInputText } from "@/utils/placeholders";
+import { apiFetch } from "@/utils/api";
 
 export function CreateNewNote() {
   const [type, setType] = useState<NoteTypes>("note");

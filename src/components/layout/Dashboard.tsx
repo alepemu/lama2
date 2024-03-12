@@ -10,23 +10,23 @@ import {
   TouchSensor,
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
-import { mouseActivation, touchActivation } from "../../utils/dndSensors";
+import { mouseActivation, touchActivation } from "@/utils/dndSensors";
 import {
   handleDragStart,
   handleDragEnd,
   handleDragCancel,
-} from "../../services/dndActions";
+} from "@/services/dndActions";
 // Components
 import { Grid } from "./Grid";
 import { Note } from "../notes/Note";
 import { SortableNote } from "../notes/SortableNote";
 import { LoadingNote } from "../notes/LoadingNote";
 // State
-import { useAppSelector, useAppDispatch } from "../../hooks/store";
-import { updateNotesOrder } from "../../store/notes.slice";
+import { useAppSelector, useAppDispatch } from "@/hooks/store";
+import { updateNotesOrder } from "@/store/notes.slice";
 // Types
-import { NoteType } from "../../types";
-import { missingNote } from "../../utils/placeholders";
+import { NoteType } from "@/types";
+import { missingNote } from "@/utils/placeholders";
 
 export function Dashboard() {
   const [activeId, setActiveId] = useState<string | null>(null);

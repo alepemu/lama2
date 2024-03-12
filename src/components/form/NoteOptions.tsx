@@ -1,7 +1,7 @@
 // Components
 import Button from "../buttons/button";
 // Types
-import { NoteTypes, NoteMethods } from "../../types";
+import { NoteTypes, NoteMethods } from "@/types";
 
 type Props = {
   type: NoteTypes;

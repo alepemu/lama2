@@ -1,14 +1,16 @@
 import { HTMLAttributes } from "react";
 
-export type NoteType = {
-  id?: string;
-  position?: number;
+export type NoteInputType = {
   data: {
-    typeId: number;
     title: string;
     text?: string;
     list?: string[];
+    typeId: number;
   };
+};
+
+export type NoteType = NoteInputType & {
+  id: string;
   isDragging?: boolean;
 };
 

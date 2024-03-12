@@ -1,5 +1,5 @@
-import mocks from "../assets/mocks.json";
-import { NoteType } from "../types";
+import mocks from "@/assets/mocks.json";
+import { NoteType, NoteInputType } from "@/types";
 
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -21,7 +21,7 @@ export const notesSlice = createSlice({
     updateNotesOrder: (_, action: PayloadAction<NoteType[]>) => {
       return action.payload;
     },
-    addNote: (state, action: PayloadAction<NoteType>) => {
+    addNote: (state, action: PayloadAction<NoteInputType>) => {
       const id = Date.now().toString();
       const { title, text, list, typeId } = action.payload.data;
       return [{ data: { title, text, list, typeId }, id }, ...state];
