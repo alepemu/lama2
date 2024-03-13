@@ -67,7 +67,7 @@ export function CreateNewNote() {
   };
 
   return (
-    <div className="h-28 lg:h-16 py-4 text-white flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-10">
+    <div className="h-28 md:h-16 py-4 text-white flex flex-col md:flex-row justify-center items-center gap-4 lg:gap-10">
       <NoteOptions
         type={type}
         method={method}
