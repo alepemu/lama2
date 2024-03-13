@@ -1,7 +1,6 @@
 import { useState, FormEvent } from "react";
 // Components
 import { NoteOptions } from "./NoteOptions";
-import Button from "../buttons/button";
 // State
 import { useAppDispatch } from "@/hooks/store";
 import { addNote } from "@/store/notes.slice";
@@ -11,6 +10,8 @@ import { NoteMethods, NoteTypes } from "@/types";
 // Constants
 import { noteInputText } from "@/utils/placeholders";
 import { apiFetch } from "@/utils/api";
+// Icons
+import { Plus, Sparkles } from "lucide-react";
 
 export function CreateNewNote() {
   const [type, setType] = useState<NoteTypes>("note");
@@ -84,9 +85,12 @@ export function CreateNewNote() {
             placeholder={noteInputText[type][method]}
             className="bg-transparent py-1 px-2 border-b-2 border-white/50 focus:outline-none"
           />
-          <Button type="submit" className="bg-white/25 font-bold">
-            ＋
-          </Button>
+          <button
+            type="submit"
+            className="flex justify-center items-center bg-stone-700 rounded-xl p-1 font-bold w-8 h-8"
+          >
+            {method === "ai" ? <Sparkles size={16} /> : <Plus size={16} />}
+          </button>
         </form>
       </div>
     </div>
