@@ -14,13 +14,13 @@ import {
 // Types
 import { NoteOpenProps } from "@/types";
 
-import { Palette, Trash2 } from "lucide-react";
+import { /*Palette,*/ Trash2 } from "lucide-react";
 
 export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
   const [title, setTitle] = useState(data.title);
   const [text, setText] = useState(data.text);
-  const [list, setList] = useState(data.list);
+  const [list, _] = useState(data.list);
   const dispatch = useAppDispatch();
 
   const handleEdit = (event: React.FormEvent) => {
