@@ -6,11 +6,11 @@ import { updateNoteById, deleteNoteById } from "@/store/notes.slice";
 import { Button } from "@/components/shadcn/Button";
 import {
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/shadcn/Dialog";
+import { ListItem } from "@/components/notes/list/ListItem";
 // Types
 import { NoteOpenProps } from "@/types";
 
@@ -18,18 +18,47 @@ import { /*Palette,*/ Trash2 } from "lucide-react";
 
 export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
-  const [title, setTitle] = useState(data.title);
-  const [text, setText] = useState(data.text);
-  const [list, _] = useState(data.list);
+  const [title, setTitle] = useState<string>(data.title);
+  const [text, setText] = useState<string | undefined>(data.text);
+  const [list, setList] = useState<string[] | undefined>(data.list);
+  const [listItem, setListItem] = useState<string>("");
   const dispatch = useAppDispatch();
 
-  const handleEdit = (event: React.FormEvent) => {
+  const updateListItem = (index: number, newItem: string) => {
+    if (newItem === "") {
+      setList((list) => {
+        const newList = [...(list ?? [])];
+        newList.splice(index, 1);
+        return newList;
+      });
+      return;
+    }
+    setList((list) => {
+      const newList = [...(list ?? [])];
+      newList[index] = newItem;
+      return newList;
+    });
+  };
+
+  const handleEditNote = (event: React.FormEvent) => {
     event.preventDefault();
-    const data = { title, text, list, typeId };
+
+    let updatedList = list;
+    if (listItem) {
+      console.log("eeeh");
+      console.log(listItem);
+      updatedList = [...(list ?? []), listItem];
+      setList(updatedList);
+      setListItem("");
+    }
+
+    const data = { title, text, list: updatedList, typeId };
     if (title === "" && text === "") dispatch(deleteNoteById(id));
     else dispatch(updateNoteById({ id, data }));
     close();
   };
+
+  // const handleEditList = (event: React.FormEvent) => {};
 
   const handleDelete = () => {
     dispatch(deleteNoteById(id));
@@ -40,10 +69,10 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
     <DialogContent
       className="w-5/6 bg-gradient-to-br from-stone-600 to-stone-700 text-white border-2 border-white/25"
       onInteractOutside={(event) => {
-        handleEdit(event as any);
+        handleEditNote(event as any);
       }}
     >
-      <form onSubmit={handleEdit} className="space-y-2">
+      <form onSubmit={handleEditNote} className="space-y-2">
         <DialogHeader>
           <DialogTitle>
             <input
@@ -56,25 +85,40 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
             />
           </DialogTitle>
         </DialogHeader>
-        <DialogDescription>
-          {data.text && (
-            <textarea
-              name="text"
-              placeholder="Content..."
-              tabIndex={-1}
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-              className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
-            />
-          )}
-          {data.list && (
-            <ul className="list-disc ml-4 text-base">
+        {text && (
+          <textarea
+            name="text"
+            placeholder="Content..."
+            tabIndex={-1}
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+            className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
+          />
+        )}
+        {list && (
+          <>
+            <ul className="list-disc ml-4">
               {data.list?.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="break-words">
+                  <ListItem
+                    index={index}
+                    item={item}
+                    updateList={(newItem) => updateListItem(index, newItem)}
+                  />
+                </li>
               ))}
+              <li>
+                <input
+                  name="list-item-new"
+                  placeholder="New item..."
+                  value={listItem}
+                  onChange={(event) => setListItem(event.target.value)}
+                  className="w-4/5 bg-transparent focus:outline-none text-base"
+                />
+              </li>
             </ul>
-          )}
-        </DialogDescription>
+          </>
+        )}
         <DialogFooter>
           <Button className="bg-stone-700 !px-1" onClick={handleDelete}>
             <Trash2 className="h-4" />
