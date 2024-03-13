@@ -1,19 +1,35 @@
 [
   {
     "data": {
-      "title": "Test note",
-      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+      "title": "About LAMA2",
+      "text": "This is an enhanced version of the original project LAMA incorporating new features and technologies like TypeScript, Redux, AI-powered note generation, drag-and-drop functionality and much more. The project is open source and available on GitHub.",
       "typeId": 0
     },
     "id": "1"
   },
   {
     "data": {
-      "title": "Test list",
+      "title": "What's new @ v0.2.0",
       "list": [
-        "The sun sets behind the mountains, painting the sky orange.",
-        "Books hold stories that transport us to different worlds instantly.",
-        "Coffee brewing in the morning fills the house with warmth."
+        "Added dialog when clicking a note",
+        "Note title and text can be modified",
+        "New note options and input refactored",
+        "AI response animation skeleton",
+        "Responsive UI and DnD functionality"
+      ],
+      "typeId": 1
+    },
+    "id": "2"
+  },
+  {
+    "data": {
+      "title": "What's coming @ v0.X.X",
+      "list": [
+        "Make note lists modifiable",
+        "Integrate authentication",
+        "Connect to database",
+        "Error handling",
+        "Testing"
       ],
       "typeId": 1
     },

@@ -48,7 +48,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           <DialogTitle>
             <input
               name="title"
-              placeholder="Give a title..."
+              placeholder="Title..."
               tabIndex={-1}
               value={title}
               onChange={(event) => setTitle(event.target.value)}
@@ -57,17 +57,17 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           </DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          {data.typeId === 0 && (
+          {data.text && (
             <textarea
               name="text"
-              placeholder="Start typing..."
+              placeholder="Content..."
               tabIndex={-1}
               value={text}
               onChange={(event) => setText(event.target.value)}
               className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
             />
           )}
-          {data.typeId === 1 && (
+          {data.list && (
             <ul className="list-disc ml-4 text-base">
               {data.list?.map((item, index) => (
                 <li key={index}>{item}</li>
@@ -76,13 +76,13 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           )}
         </DialogDescription>
         <DialogFooter>
-          <Button className="bg-red-800 !px-1" onClick={handleDelete}>
+          <Button className="bg-stone-700 !px-1" onClick={handleDelete}>
             <Trash2 className="h-4" />
           </Button>
-          <Button className="bg-black/50 !px-1">
+          {/* <Button className="bg-black/50 !px-1">
             <Palette className="h-4" />
-          </Button>
-          <Button type="submit" className="bg-emerald-600">
+          </Button> */}
+          <Button type="submit" className="bg-green-700">
             Save
           </Button>
         </DialogFooter>

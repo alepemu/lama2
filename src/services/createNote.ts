@@ -20,11 +20,13 @@ const createNewNote = async (
   };
 
   if (method === "ai") {
-    const body = JSON.stringify({ query: { input, typeId } });
-    const response = await apiFetch("/ai", "POST", body);
-    const data = await response.json();
-    newNote.text = data.text;
-    newNote.list = data.list;
+    // const body = JSON.stringify({ query: { input, typeId } });
+    // const response = await apiFetch("/ai", "POST", body);
+    // const data = await response.json();
+    // newNote.text = data.text;
+    // newNote.list = data.list;
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    newNote.text = "Sorry, the server is currently down ):";
   } else if (method === "manual") {
     newNote.text = typeId === 0 ? "note" : undefined;
     newNote.list = typeId === 1 ? Array(3).fill("item") : undefined;
