@@ -13,6 +13,12 @@ export type NoteBasicProps = {
   id: string;
   data: NoteInputType["data"];
 };
+
+export type NoteOutsideProps = NoteBasicProps & {
+  isDragging?: boolean;
+  style?: HTMLAttributes<HTMLDivElement>["style"];
+};
+
 export type NoteOpenProps = NoteBasicProps & {
   close: () => void;
 };

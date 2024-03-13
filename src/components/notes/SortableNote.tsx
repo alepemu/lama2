@@ -13,6 +13,7 @@ const SortableNote: FC<NoteProps> = (props) => {
 
   const style = {
     opacity: isOver ? 0.5 : 1,
+    transition: "opacity 0.5s",
   };
 
   return (
