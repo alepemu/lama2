@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .animate-fade-in {
-  @apply animate-fadeIn;
+  @apply animate-note-fade-in;
 }

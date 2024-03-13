@@ -6,7 +6,8 @@ export default {
       animation: {
         "bounce-side": "bounceX 3s infinite;",
         "spin-slow": "spin 1.5s linear infinite",
-        fadeIn: "fadeIn 1.5s ease-in-out",
+        "note-fade-in": "fadeIn 1.5s ease-in-out",
+        "dashboard-intro": "fadeIn 0.5s ease-in",
       },
       keyframes: {
         bounceX: {

@@ -50,7 +50,7 @@ export function Dashboard() {
         onDragEnd={handleDragEnd(setActiveId, arrangeNotes, notes)}
         onDragCancel={handleDragCancel(setActiveId)}
       >
-        <div className="overflow-clip min-h-[calc(100vh-160px)] md:min-h-[calc(100vh-112px)]">
+        <div className="overflow-clip min-h-[calc(100vh-160px)] md:min-h-[calc(100vh-112px)] animate-dashboard-intro">
           <SortableContext items={notes} strategy={rectSortingStrategy}>
             <Grid>
               {loading && <NoteLoading />}
