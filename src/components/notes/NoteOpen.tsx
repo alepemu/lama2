@@ -20,11 +20,12 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
   const [title, setTitle] = useState(data.title);
   const [text, setText] = useState(data.text);
+  const [list, setList] = useState(data.list);
   const dispatch = useAppDispatch();
 
   const handleEdit = (event: React.FormEvent) => {
     event.preventDefault();
-    const data = { title, text, typeId };
+    const data = { title, text, list, typeId };
     if (title === "" && text === "") dispatch(deleteNoteById(id));
     else dispatch(updateNoteById({ id, data }));
     close();
@@ -42,7 +43,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
         handleEdit(event as any);
       }}
     >
-      <form onSubmit={handleEdit}>
+      <form onSubmit={handleEdit} className="space-y-2">
         <DialogHeader>
           <DialogTitle>
             <input
@@ -54,26 +55,26 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
               className="w-full bg-transparent focus:outline-none text-2xl"
             />
           </DialogTitle>
-          <DialogDescription>
-            {data.typeId === 0 && (
-              <textarea
-                name="text"
-                placeholder="Start typing..."
-                tabIndex={-1}
-                value={text}
-                onChange={(event) => setText(event.target.value)}
-                className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
-              />
-            )}
-            {/* {data.typeId === 1 && (
-              <ul className="list-disc ml-4">
-                {data.list?.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            )} */}
-          </DialogDescription>
         </DialogHeader>
+        <DialogDescription>
+          {data.typeId === 0 && (
+            <textarea
+              name="text"
+              placeholder="Start typing..."
+              tabIndex={-1}
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+              className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
+            />
+          )}
+          {data.typeId === 1 && (
+            <ul className="list-disc ml-4 text-base">
+              {data.list?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </DialogDescription>
         <DialogFooter>
           <Button className="bg-red-800 !px-1" onClick={handleDelete}>
             <Trash2 className="h-4" />

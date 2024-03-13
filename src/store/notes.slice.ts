@@ -28,8 +28,8 @@ export const notesSlice = createSlice({
     },
     updateNoteById: (state, action: PayloadAction<NoteBasicProps>) => {
       const { id, data } = action.payload;
-      const { title, text, typeId } = data;
-      const updatedNote = { id, data: { title, text, typeId } };
+      const { title, text, list, typeId } = data;
+      const updatedNote = { id, data: { title, text, list, typeId } };
       return state.map((note) => (note.id === id ? updatedNote : note));
     },
     deleteNoteById: (state, action: PayloadAction<string>) => {
