@@ -14,7 +14,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "px-3 py-0.5 rounded-xl",
-        sm: "px-2 rounded-lg",
+        toggle: "px-2 rounded-lg",
       },
     },
     defaultVariants: {

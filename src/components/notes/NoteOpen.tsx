@@ -54,7 +54,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
               className="w-full bg-transparent focus:outline-none text-2xl"
             />
           </DialogTitle>
-          <DialogDescription className="text-white">
+          <DialogDescription>
             {data.typeId === 0 && (
               <textarea
                 name="text"
@@ -75,13 +75,13 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button className="bg-black/50 !px-1" onClick={handleDelete}>
-            <Trash2 className="h-4 text-white/75" />
+          <Button className="bg-red-800 !px-1" onClick={handleDelete}>
+            <Trash2 className="h-4" />
           </Button>
-          <Button className="bg-emerald-600/50 !px-1">
-            <Palette className="h-4 text-white/75" />
+          <Button className="bg-black/50 !px-1">
+            <Palette className="h-4" />
           </Button>
-          <Button type="submit" className="bg-rose-500">
+          <Button type="submit" className="bg-emerald-600">
             Save
           </Button>
         </DialogFooter>

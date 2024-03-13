@@ -23,7 +23,7 @@ export function NewNoteOptions({
         <Button
           onClick={() => setType("note")}
           variant="empty"
-          size="sm"
+          size="toggle"
           active={type === "note"}
         >
           note
@@ -31,7 +31,7 @@ export function NewNoteOptions({
         <Button
           onClick={() => setType("list")}
           variant="empty"
-          size="sm"
+          size="toggle"
           active={type === "list"}
         >
           list
@@ -42,7 +42,7 @@ export function NewNoteOptions({
         <Button
           onClick={() => setMethod("manual")}
           variant="empty"
-          size="sm"
+          size="toggle"
           active={method === "manual"}
         >
           input
@@ -50,7 +50,7 @@ export function NewNoteOptions({
         <Button
           onClick={() => setMethod("ai")}
           variant="empty"
-          size="sm"
+          size="toggle"
           active={method === "ai"}
         >
           AI

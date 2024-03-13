@@ -4,7 +4,7 @@ import { Dashboard } from "./components/layout/Dashboard.tsx";
 
 export function App() {
   return (
-    <div className="bg-zinc-900">
+    <div className="bg-zinc-900 text-white">
       <Navbar />
       <NewNoteInput />
       <Dashboard />
