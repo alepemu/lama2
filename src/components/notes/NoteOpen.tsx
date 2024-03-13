@@ -82,9 +82,9 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           {/* <Button className="bg-black/50 !px-1">
             <Palette className="h-4" />
           </Button> */}
-          <Button type="submit" className="bg-green-700">
+          {/* <Button type="submit" className="bg-green-700">
             Save
-          </Button>
+          </Button> */}
         </DialogFooter>
       </form>
     </DialogContent>

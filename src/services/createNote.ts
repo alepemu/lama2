@@ -1,4 +1,4 @@
-import { apiFetch } from "@/utils/api";
+// import { apiFetch } from "@/utils/api";
 
 type NewNoteProps = {
   title: string;
