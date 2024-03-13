@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAppDispatch } from "@/hooks/store";
 import { updateNoteById, deleteNoteById } from "@/store/notes.slice";
 // Components
-import Button from "@/components/buttons/button";
+import { Button } from "@/components/shadcn/Button";
 import {
   DialogContent,
   DialogDescription,

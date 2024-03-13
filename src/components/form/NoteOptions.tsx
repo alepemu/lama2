@@ -1,5 +1,5 @@
 // Components
-// import Button from "../buttons/button";
+import { Button } from "../shadcn/Button";
 // Types
 import { NoteTypes, NoteMethods } from "@/types";
 
@@ -14,37 +14,42 @@ export function NoteOptions({ type, method, setType, setMethod }: Props) {
   return (
     <div className="flex justify-center items-center gap-2">
       <p>Add</p>
-
       <div className="bg-stone-700 rounded-xl p-1">
-        <button
+        <Button
           onClick={() => setType("note")}
-          className={`px-2 rounded-lg ${type === "note" ? "bg-amber-600" : ""}`}
+          variant="empty"
+          size="sm"
+          active={type === "note"}
         >
           note
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setType("list")}
-          className={`px-2 rounded-lg ${type === "list" ? "bg-amber-600" : ""}`}
+          variant="empty"
+          size="sm"
+          active={type === "list"}
         >
           list
-        </button>
+        </Button>
       </div>
       <p>from</p>
       <div className="bg-stone-700 rounded-xl p-1">
-        <button
+        <Button
           onClick={() => setMethod("manual")}
-          className={`px-2 rounded-lg ${
-            method === "manual" ? "bg-amber-600" : ""
-          }`}
+          variant="empty"
+          size="sm"
+          active={method === "manual"}
         >
           input
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setMethod("ai")}
-          className={`px-2 rounded-lg ${method === "ai" ? "bg-amber-600" : ""}`}
+          variant="empty"
+          size="sm"
+          active={method === "ai"}
         >
           AI
-        </button>
+        </Button>
       </div>
     </div>
   );
