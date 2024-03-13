@@ -1,11 +1,11 @@
   const noteInputText = {
     note: {
       manual: "e.g. Note to remember...",
-      ai: "e.g. definition of closure...",
+      ai: "e.g. Definition of closure...",
     },
     list: {
       manual: "e.g. List of chores to do...",
-      ai: "e.g. steps to boil an egg...",
+      ai: "e.g. Steps to boil an egg...",
     },
   };
 

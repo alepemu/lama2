@@ -14,7 +14,7 @@ export type NoteBasicProps = {
   data: NoteInputType["data"];
 };
 
-export type NoteOutsideProps = NoteBasicProps & {
+export type NoteCloseProps = NoteBasicProps & {
   isDragging?: boolean;
   style?: HTMLAttributes<HTMLDivElement>["style"];
 };

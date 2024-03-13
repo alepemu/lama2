@@ -1,8 +1,8 @@
 import { CSSProperties } from "react";
 // Types
-import { NoteOutsideProps } from "@/types";
+import { NoteCloseProps } from "@/types";
 
-const NoteOutside = ({ id, data, style, isDragging }: NoteOutsideProps) => {
+const NoteClose = ({ id, data, style, isDragging }: NoteCloseProps) => {
   const inlineStyles: CSSProperties = {
     opacity: isDragging ? "0.75" : "1",
     border: isDragging ? "2px dashed white" : "",
@@ -32,4 +32,4 @@ const NoteOutside = ({ id, data, style, isDragging }: NoteOutsideProps) => {
     </div>
   );
 };
-export { NoteOutside };
+export { NoteClose };

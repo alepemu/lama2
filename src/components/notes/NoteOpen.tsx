@@ -65,6 +65,13 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
                 className="w-full resize-none h-60 bg-transparent focus:outline-none text-base"
               />
             )}
+            {/* {data.typeId === 1 && (
+              <ul className="list-disc ml-4">
+                {data.list?.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            )} */}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
