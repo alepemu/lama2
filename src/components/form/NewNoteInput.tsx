@@ -5,11 +5,12 @@ import { NewNoteOptions } from "./NewNoteOptions";
 import { useAppDispatch } from "@/hooks/store";
 import { addNote } from "@/store/notes.slice";
 import { toggleLoading } from "@/store/loading.slice";
+//Services
+import { createNewNote } from "@/services/createNote";
 // Types
 import { NoteMethods, NoteTypes } from "@/types";
 // Constants
 import { noteInputText } from "@/utils/placeholders";
-import { apiFetch } from "@/utils/api";
 // Icons
 import { Plus, Sparkles } from "lucide-react";
 
@@ -18,52 +19,17 @@ export function NewNoteInput() {
   const [method, setMethod] = useState<NoteMethods>("manual");
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const input = formData.get("input") as string;
+    const typeId = type === "note" ? 0 : 1;
 
     dispatch(toggleLoading(true));
-
-    if (method === "ai") {
-      apiFetch("/ai-test", "POST", JSON.stringify({ query: input, type }))
-        .then((response) => response.json())
-        .then((data) => {
-          if (typeof data === "string") {
-            dispatch(
-              addNote({
-                data: { title: input, text: data, typeId: 0 },
-              })
-            );
-          } else if (typeof data === "object") {
-            dispatch(
-              addNote({
-                data: { title: input, list: data, typeId: 1 },
-              })
-            );
-          } else {
-            alert("Error");
-          }
-          dispatch(toggleLoading(false));
-          form.reset();
-        });
-    } else if (method === "manual") {
-      dispatch(
-        addNote({
-          data:
-            type === "note"
-              ? { title: input, text: "", typeId: 0 }
-              : {
-                  title: input,
-                  list: Array(3).fill(type + "-" + method),
-                  typeId: 1,
-                },
-        })
-      );
-      dispatch(toggleLoading(false));
-      form.reset();
-    }
+    dispatch(addNote({ data: await createNewNote(input, typeId, method) }));
+    dispatch(toggleLoading(false));
+    form.reset();
   };
 
   return (
