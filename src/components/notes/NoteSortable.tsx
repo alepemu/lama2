@@ -6,7 +6,7 @@ import { Note } from "./Note";
 // Types
 import { NoteProps } from "../../types";
 
-const SortableNote: FC<NoteProps> = (props) => {
+const NoteSortable: FC<NoteProps> = (props) => {
   const { isOver, attributes, listeners, setNodeRef } = useSortable({
     id: props.id,
   });
@@ -27,4 +27,4 @@ const SortableNote: FC<NoteProps> = (props) => {
   );
 };
 
-export { SortableNote };
+export { NoteSortable };

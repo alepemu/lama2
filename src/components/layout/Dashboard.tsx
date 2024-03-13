@@ -19,7 +19,7 @@ import {
 // Components
 import { Grid } from "./Grid";
 import { Note } from "../notes/Note";
-import { SortableNote } from "../notes/SortableNote";
+import { NoteSortable } from "../notes/NoteSortable";
 import { NoteLoading } from "../notes/NoteLoading";
 // State
 import { useAppSelector, useAppDispatch } from "@/hooks/store";
@@ -55,7 +55,7 @@ export function Dashboard() {
             <Grid>
               {loading && <NoteLoading />}
               {notes.map((note) => (
-                <SortableNote key={note.id} id={note.id} data={note.data} />
+                <NoteSortable key={note.id} id={note.id} data={note.data} />
               ))}
             </Grid>
           </SortableContext>

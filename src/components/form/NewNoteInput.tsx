@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 // Components
-import { NoteOptions } from "./NoteOptions";
+import { NewNoteOptions } from "./NewNoteOptions";
 // State
 import { useAppDispatch } from "@/hooks/store";
 import { addNote } from "@/store/notes.slice";
@@ -13,7 +13,7 @@ import { apiFetch } from "@/utils/api";
 // Icons
 import { Plus, Sparkles } from "lucide-react";
 
-export function CreateNewNote() {
+export function NewNoteInput() {
   const [type, setType] = useState<NoteTypes>("note");
   const [method, setMethod] = useState<NoteMethods>("manual");
   const dispatch = useAppDispatch();
@@ -68,7 +68,7 @@ export function CreateNewNote() {
 
   return (
     <div className="h-28 md:h-16 py-4 text-white flex flex-col md:flex-row justify-center items-center gap-4 lg:gap-10">
-      <NoteOptions
+      <NewNoteOptions
         type={type}
         method={method}
         setType={setType}

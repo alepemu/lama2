@@ -3,14 +3,19 @@ import { Button } from "../shadcn/Button";
 // Types
 import { NoteTypes, NoteMethods } from "@/types";
 
-type Props = {
+type NewNoteOptionsProps = {
   type: NoteTypes;
   method: NoteMethods;
   setType: (type: NoteTypes) => void;
   setMethod: (method: NoteMethods) => void;
 };
 
-export function NoteOptions({ type, method, setType, setMethod }: Props) {
+export function NewNoteOptions({
+  type,
+  method,
+  setType,
+  setMethod,
+}: NewNoteOptionsProps) {
   return (
     <div className="flex justify-center items-center gap-2">
       <p>Add</p>

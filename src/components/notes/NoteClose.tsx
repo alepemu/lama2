@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 // Types
 import { NoteCloseProps } from "@/types";
 
-const NoteClose = ({ id, data, style, isDragging }: NoteCloseProps) => {
+const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
   const inlineStyles: CSSProperties = {
     opacity: isDragging ? "0.75" : "1",
     border: isDragging ? "2px dashed white" : "",
@@ -27,7 +27,6 @@ const NoteClose = ({ id, data, style, isDragging }: NoteCloseProps) => {
             </ul>
           )}
         </div>
-        <p className="text-right text-xs italic opacity-50">id-{id}</p>
       </div>
     </div>
   );

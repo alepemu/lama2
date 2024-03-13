@@ -14,12 +14,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
       <Dialog open={isOpen}>
         <DialogTrigger asChild onClick={() => setIsOpen(true)}>
           <div ref={ref} {...props}>
-            <NoteClose
-              id={id}
-              data={data}
-              style={style}
-              isDragging={isDragging}
-            />
+            <NoteClose data={data} style={style} isDragging={isDragging} />
           </div>
         </DialogTrigger>
         <NoteOpen id={id} data={data} close={() => setIsOpen(false)} />
