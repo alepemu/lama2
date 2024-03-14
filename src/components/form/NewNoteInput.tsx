@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/store";
 import { addNote } from "@/store/notes.slice";
 import { toggleLoading } from "@/store/loading.slice";
 //Services
-import { createNewNote } from "@/services/createNote";
+import { createNewNote } from "@/services/createNewNote";
 // Types
 import { NoteMethods, NoteTypes } from "@/types";
 // Constants
