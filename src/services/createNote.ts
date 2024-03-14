@@ -17,16 +17,16 @@ const createNewNote = async (
     // newNote.text = data.text;
     // newNote.list = data.list;
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    newNote.data.text = "Sorry, the server is currently down ):";
+    newNote.data.text = "Sorry, the server is currently off ):";
     newNote.data.list = [
-      { itemId: Date.now(), item: "Sorry, the server is currently down ):" },
+      { itemId: Date.now(), item: "Sorry, the server is currently off ):" },
     ];
   } else if (method === "manual") {
     newNote.data.text = typeId === 0 ? "" : undefined;
     newNote.data.list = typeId === 1 ? [] : undefined;
   }
   console.log(newNote);
-  
+
   return newNote;
 };
 

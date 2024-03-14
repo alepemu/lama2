@@ -9,13 +9,15 @@
   },
   {
     "data": {
-      "title": "What's new @ v0.2.0",
+      "title": "What's new @ v0.2.1",
       "list": [
-        { "itemId": 11, "item": "Added dialog when clicking a note" },
-        { "itemId": 12, "item": "Note title and text can be modified" },
-        { "itemId": 13, "item": "New note options and input refactored" },
-        { "itemId": 14, "item": "AI response animation skeleton" },
-        { "itemId": 15, "item": "Responsive UI and DnD functionality" }
+        { "itemId": 31, "item": "Note text line breaks corrected" },
+        {
+          "itemId": 32,
+          "item": "Note textarea input height resizes automatically"
+        },
+        { "itemId": 33, "item": "Note lists fully modifiable" },
+        { "itemId": 34, "item": "Note max dialog height limited" }
       ],
       "typeId": 1
     },
@@ -23,9 +25,10 @@
   },
   {
     "data": {
-      "title": "What's coming @ v0.X.X",
+      "title": "What's coming next",
       "list": [
-        { "itemId": 21, "item": "Make note lists modifiable" },
+        { "itemId": 35, "item": "Drag note to bin/delete in desktop" },
+        { "itemId": 36, "item": "Options menu on each note" },
         { "itemId": 22, "item": "Integrate authentication" },
         { "itemId": 23, "item": "Connect to database" },
         { "itemId": 24, "item": "Error handling" },
@@ -34,20 +37,5 @@
       "typeId": 1
     },
     "id": "3"
-  },
-  {
-    "data": {
-      "title": "Changes @ v0.2.1",
-      "list": [
-        { "itemId": 31, "item": "Note text line breaks added" },
-        { "itemId": 32, "item": "Note textarea height resizes automatically" },
-        { "itemId": 33, "item": "Note lists modifiable" },
-        { "itemId": 34, "item": "Note height limited when opened" },
-        { "itemId": 35, "item": "DnD note to trash in desktop" },
-        { "itemId": 36, "item": "TBC: Break lines" }
-      ],
-      "typeId": 1
-    },
-    "id": "4"
   }
 ]
