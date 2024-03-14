@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 // State
 import { useAppDispatch } from "@/hooks/store";
 import { updateNoteById, deleteNoteById } from "@/store/notes.slice";
@@ -16,9 +16,13 @@ import TextareaAutosize from "react-textarea-autosize";
 import { NoteOpenProps } from "@/types";
 // Icons
 import { Trash2 } from "lucide-react";
+// Styles
+import { backgroundColor } from "@/utils/placeholders";
 
 export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
+  const theme = data.theme || "default";
+
   const [title, setTitle] = useState<string>(data.title);
   const [text, setText] = useState<string | undefined>(data.text);
   const [list, setList] = useState<
@@ -40,15 +44,23 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
       setListNewItem("");
     }
 
-    const data = { title, text, list: updatedList ?? [], typeId };
+    const data = { title, text, list: updatedList ?? [], typeId, theme };
     if (title === "" && (text === "" || !(list ?? []).length))
       dispatch(deleteNoteById(id));
     else dispatch(updateNoteById({ id, data }));
     close();
   };
 
+  const bgFrom = backgroundColor[theme as keyof typeof backgroundColor][0];
+  const bgTo = backgroundColor[theme as keyof typeof backgroundColor][1];
+
+  const inlineStyles: CSSProperties = {
+    background: `linear-gradient(to right, ${bgFrom}, ${bgTo})`, // Add this line
+  };
+
   return (
     <DialogContent
+      style={inlineStyles}
       className="bg-gradient-to-br from-stone-600 to-stone-700 text-white border-y-2 border-white/25"
       onInteractOutside={(event) => handleEditNote(event as any)}
     >
@@ -65,7 +77,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
         </DialogTitle>
       </DialogHeader>
       {/* IF TEXT */}
-      {typeId === 0 && (
+      {data.typeId === 0 && (
         <TextareaAutosize
           name="text"
           placeholder="Note"
@@ -76,7 +88,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
         />
       )}
       {/* IF LIST */}
-      {typeId === 1 && (
+      {data.typeId === 1 && (
         <ListGroup
           list={list}
           setList={setList}

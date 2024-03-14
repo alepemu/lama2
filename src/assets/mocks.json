@@ -3,7 +3,8 @@
     "data": {
       "title": "About LAMA2",
       "text": "This is an enhanced version of the original project LAMA incorporating new features and technologies like TypeScript, Redux, AI-powered note generation, drag-and-drop functionality and much more. The project is open source and available on GitHub.",
-      "typeId": 0
+      "typeId": 0,
+      "theme": "cyan"
     },
     "id": "1"
   },
@@ -19,7 +20,8 @@
         { "itemId": 33, "item": "Note lists fully modifiable" },
         { "itemId": 34, "item": "Note max dialog height limited" }
       ],
-      "typeId": 1
+      "typeId": 1,
+      "theme": "blue"
     },
     "id": "2"
   },
@@ -34,7 +36,8 @@
         { "itemId": 24, "item": "Error handling" },
         { "itemId": 25, "item": "Testing" }
       ],
-      "typeId": 1
+      "typeId": 1,
+      "theme": "orange"
     },
     "id": "3"
   }

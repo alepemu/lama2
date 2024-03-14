@@ -6,6 +6,7 @@ export type NoteInputType = {
     text?: string;
     list?: { itemId: number; item: string }[];
     typeId: number;
+    theme?: string;
   };
 };
 

@@ -23,13 +23,13 @@ export const notesSlice = createSlice({
     },
     addNote: (state, action: PayloadAction<NoteInputType>) => {
       const id = Date.now().toString();
-      const { title, text, list, typeId } = action.payload.data;
-      return [{ data: { title, text, list, typeId }, id }, ...state];
+      const { title, text, list, typeId, theme } = action.payload.data;
+      return [{ data: { title, text, list, typeId, theme }, id }, ...state];
     },
     updateNoteById: (state, action: PayloadAction<NoteBasicProps>) => {
       const { id, data } = action.payload;
-      const { title, text, list, typeId } = data;
-      const updatedNote = { id, data: { title, text, list, typeId } };
+      const { title, text, list, typeId, theme } = data;
+      const updatedNote = { id, data: { title, text, list, typeId, theme } };
       return state.map((note) => (note.id === id ? updatedNote : note));
     },
     deleteNoteById: (state, action: PayloadAction<string>) => {
