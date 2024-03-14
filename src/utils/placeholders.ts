@@ -4,7 +4,7 @@
       ai: "e.g. Definition of closure...",
     },
     list: {
-      manual: "e.g. List of chores to do...",
+      manual: "e.g. List of tasks...",
       ai: "e.g. Steps to boil an egg...",
     },
   };

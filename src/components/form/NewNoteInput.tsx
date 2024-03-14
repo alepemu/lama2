@@ -52,6 +52,7 @@ export function NewNoteInput() {
             name="input"
             type="text"
             placeholder={noteInputText[type][method]}
+            autoComplete="off"
             className="bg-transparent py-1 px-2 border-b-2 border-white/50 focus:outline-none"
           />
           <button

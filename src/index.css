@@ -5,3 +5,11 @@
 .animate-fade-in {
   @apply animate-note-fade-in;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #78716c;
+}

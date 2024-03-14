@@ -9,6 +9,11 @@ export default {
         "note-fade-in": "fadeIn 1.5s ease-in-out",
         "dashboard-intro": "fadeIn 0.5s ease-in",
       },
+      maxHeight: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+      },
       keyframes: {
         bounceX: {
           "0%, 100%": {

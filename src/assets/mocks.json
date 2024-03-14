@@ -34,5 +34,20 @@
       "typeId": 1
     },
     "id": "3"
+  },
+  {
+    "data": {
+      "title": "Changes @ v0.2.1",
+      "list": [
+        "Note text line breaks added",
+        "Note textarea height resizes automatically",
+        "Note lists modifiable",
+        "Note height limited when opened",
+        "DnD note to trash in desktop",
+        "TBC: Break lines"
+      ],
+      "typeId": 1
+    },
+    "id": "4"
   }
 ]

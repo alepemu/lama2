@@ -27,9 +27,10 @@ const createNewNote = async (
     // newNote.list = data.list;
     await new Promise((resolve) => setTimeout(resolve, 3000));
     newNote.text = "Sorry, the server is currently down ):";
+    newNote.list = ["Sorry, the server is currently down ):"];
   } else if (method === "manual") {
-    newNote.text = typeId === 0 ? "note" : undefined;
-    newNote.list = typeId === 1 ? Array(3).fill("item") : undefined;
+    newNote.text = typeId === 0 ? "" : undefined;
+    newNote.list = typeId === 1 ? [] : undefined;
   }
 
   return newNote;
