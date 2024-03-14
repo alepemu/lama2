@@ -22,7 +22,7 @@ const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
         <ul className="list-disc ml-4">
           {data.list?.map((item, index) => (
             <li key={index} className="break-words">
-              {item}
+              {item.item}
             </li>
           ))}
         </ul>

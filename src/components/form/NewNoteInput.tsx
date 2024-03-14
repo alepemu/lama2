@@ -30,7 +30,7 @@ export function NewNoteInput() {
 
     form.reset();
     dispatch(toggleLoading(true));
-    dispatch(addNote({ data: await createNewNote(input, typeId, method) }));
+    dispatch(addNote(await createNewNote(input, typeId, method)));
     dispatch(toggleLoading(false));
   };
 

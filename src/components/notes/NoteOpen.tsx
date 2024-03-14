@@ -21,14 +21,16 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
   const [title, setTitle] = useState<string>(data.title);
   const [text, setText] = useState<string | undefined>(data.text);
-  const [list, setList] = useState<string[] | undefined>(data.list);
+  const [list, setList] = useState<
+    { itemId: number; item: string }[] | undefined
+  >(data.list);
   const [listItem, setListItem] = useState<string>("");
   const dispatch = useAppDispatch();
 
   const updateListItem = (index: number, updatedItem: string) => {
     setList((list) => {
       const newList = [...(list ?? [])];
-      newList[index] = updatedItem;
+      newList[index] = { itemId: newList[index].itemId, item: updatedItem };
       return newList;
     });
   };
@@ -37,8 +39,9 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
     event.preventDefault();
 
     let updatedList = list;
-    if (listItem) {
-      updatedList = [...(list ?? []), listItem];
+    if (listItem !== "") {
+      const item = { itemId: Date.now(), item: listItem };
+      updatedList = [...(list ?? []), item];
       setList(updatedList);
       setListItem("");
     }
@@ -52,7 +55,8 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const handleEditList = (event: React.FormEvent) => {
     event.preventDefault();
     if (listItem === "") return;
-    setList((list) => [...(list ?? []), listItem]);
+    const item = { itemId: Date.now(), item: listItem };
+    setList((list) => [...(list ?? []), item]);
     setListItem("");
   };
 
@@ -91,27 +95,24 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
       {typeId === 1 && (
         <>
           <ul className="list-disc ml-4">
-            {list?.map((item, index) => {
-              const key = item + Date.now();
-              return (
-                <li key={key} className="break-words">
-                  <ListItem
-                    index={index}
-                    item={item}
-                    updateList={(updatedItem) =>
-                      updateListItem(index, updatedItem)
-                    }
-                    removeItem={() =>
-                      setList((list) => {
-                        const newList = [...(list ?? [])];
-                        newList.splice(index, 1);
-                        return newList;
-                      })
-                    }
-                  />
-                </li>
-              );
-            })}
+            {list?.map((item, index) => (
+              <li key={item.itemId} className="break-words">
+                <ListItem
+                  index={index}
+                  item={item.item}
+                  updateList={(updatedItem) =>
+                    updateListItem(index, updatedItem)
+                  }
+                  removeItem={() =>
+                    setList((list) => {
+                      const newList = [...(list ?? [])];
+                      newList.splice(index, 1);
+                      return newList;
+                    })
+                  }
+                />
+              </li>
+            ))}
             <li>
               <form onSubmit={handleEditList}>
                 <input

@@ -1,22 +1,20 @@
 // import { apiFetch } from "@/utils/api";
+import { NoteInputType } from "@/types";
 
-type NewNoteProps = {
-  title: string;
-  typeId: number;
-  text?: string;
-  list?: string[];
-};
+// type NewNoteProps = {
+//   title: string;
+//   typeId: number;
+//   text?: string;
+//   list?: string[];
+// };
 
 const createNewNote = async (
   input: string,
   typeId: number,
   method: string
-): Promise<NewNoteProps> => {
-  const newNote: NewNoteProps = {
-    title: input,
-    typeId: typeId,
-    text: undefined,
-    list: undefined,
+): Promise<NoteInputType> => {
+  const newNote: NoteInputType = {
+    data: { title: input, typeId: typeId, text: undefined, list: undefined },
   };
 
   if (method === "ai") {
@@ -26,13 +24,16 @@ const createNewNote = async (
     // newNote.text = data.text;
     // newNote.list = data.list;
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    newNote.text = "Sorry, the server is currently down ):";
-    newNote.list = ["Sorry, the server is currently down ):"];
+    newNote.data.text = "Sorry, the server is currently down ):";
+    newNote.data.list = [
+      { itemId: Date.now(), item: "Sorry, the server is currently down ):" },
+    ];
   } else if (method === "manual") {
-    newNote.text = typeId === 0 ? "" : undefined;
-    newNote.list = typeId === 1 ? [] : undefined;
+    newNote.data.text = typeId === 0 ? "" : undefined;
+    newNote.data.list = typeId === 1 ? [] : undefined;
   }
-
+  console.log(newNote);
+  
   return newNote;
 };
 

@@ -4,7 +4,7 @@ export type NoteInputType = {
   data: {
     title: string;
     text?: string;
-    list?: string[];
+    list?: { itemId: number; item: string }[];
     typeId: number;
   };
 };

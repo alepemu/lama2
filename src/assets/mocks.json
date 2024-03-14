@@ -11,11 +11,11 @@
     "data": {
       "title": "What's new @ v0.2.0",
       "list": [
-        "Added dialog when clicking a note",
-        "Note title and text can be modified",
-        "New note options and input refactored",
-        "AI response animation skeleton",
-        "Responsive UI and DnD functionality"
+        { "itemId": 11, "item": "Added dialog when clicking a note" },
+        { "itemId": 12, "item": "Note title and text can be modified" },
+        { "itemId": 13, "item": "New note options and input refactored" },
+        { "itemId": 14, "item": "AI response animation skeleton" },
+        { "itemId": 15, "item": "Responsive UI and DnD functionality" }
       ],
       "typeId": 1
     },
@@ -25,11 +25,11 @@
     "data": {
       "title": "What's coming @ v0.X.X",
       "list": [
-        "Make note lists modifiable",
-        "Integrate authentication",
-        "Connect to database",
-        "Error handling",
-        "Testing"
+        { "itemId": 21, "item": "Make note lists modifiable" },
+        { "itemId": 22, "item": "Integrate authentication" },
+        { "itemId": 23, "item": "Connect to database" },
+        { "itemId": 24, "item": "Error handling" },
+        { "itemId": 25, "item": "Testing" }
       ],
       "typeId": 1
     },
@@ -39,12 +39,12 @@
     "data": {
       "title": "Changes @ v0.2.1",
       "list": [
-        "Note text line breaks added",
-        "Note textarea height resizes automatically",
-        "Note lists modifiable",
-        "Note height limited when opened",
-        "DnD note to trash in desktop",
-        "TBC: Break lines"
+        { "itemId": 31, "item": "Note text line breaks added" },
+        { "itemId": 32, "item": "Note textarea height resizes automatically" },
+        { "itemId": 33, "item": "Note lists modifiable" },
+        { "itemId": 34, "item": "Note height limited when opened" },
+        { "itemId": 35, "item": "DnD note to trash in desktop" },
+        { "itemId": 36, "item": "TBC: Break lines" }
       ],
       "typeId": 1
     },
