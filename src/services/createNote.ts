@@ -1,13 +1,6 @@
 // import { apiFetch } from "@/utils/api";
 import { NoteInputType } from "@/types";
 
-// type NewNoteProps = {
-//   title: string;
-//   typeId: number;
-//   text?: string;
-//   list?: string[];
-// };
-
 const createNewNote = async (
   input: string,
   typeId: number,

@@ -3,14 +3,14 @@ import { useState } from "react";
 import { useAppDispatch } from "@/hooks/store";
 import { updateNoteById, deleteNoteById } from "@/store/notes.slice";
 // Components
-import { Button } from "@/components/shadcn/Button";
 import {
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/shadcn/Dialog";
-import { ListItem } from "@/components/notes/list/ListItem";
+import { ListGroup } from "@/components/notes/list/ListGroup";
+import { Button } from "@/components/shadcn/Button";
 import TextareaAutosize from "react-textarea-autosize";
 // Types
 import { NoteOpenProps } from "@/types";
@@ -24,44 +24,26 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const [list, setList] = useState<
     { itemId: number; item: string }[] | undefined
   >(data.list);
-  const [listItem, setListItem] = useState<string>("");
+  const [listNewItem, setListNewItem] = useState<string>("");
   const dispatch = useAppDispatch();
-
-  const updateListItem = (index: number, updatedItem: string) => {
-    setList((list) => {
-      const newList = [...(list ?? [])];
-      newList[index] = { itemId: newList[index].itemId, item: updatedItem };
-      return newList;
-    });
-  };
 
   const handleEditNote = (event: React.FormEvent) => {
     event.preventDefault();
 
     let updatedList = list;
-    if (listItem !== "") {
-      const item = { itemId: Date.now(), item: listItem };
+    if (listNewItem !== "") {
+      console.log(listNewItem);
+
+      const item = { itemId: Date.now(), item: listNewItem };
       updatedList = [...(list ?? []), item];
       setList(updatedList);
-      setListItem("");
+      setListNewItem("");
     }
 
-    const data = { title, text, list: updatedList, typeId };
-    if (title === "" && text === "") dispatch(deleteNoteById(id));
+    const data = { title, text, list: updatedList ?? [], typeId };
+    if (title === "" && (text === "" || !(list ?? []).length))
+      dispatch(deleteNoteById(id));
     else dispatch(updateNoteById({ id, data }));
-    close();
-  };
-
-  const handleEditList = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (listItem === "") return;
-    const item = { itemId: Date.now(), item: listItem };
-    setList((list) => [...(list ?? []), item]);
-    setListItem("");
-  };
-
-  const handleDelete = () => {
-    dispatch(deleteNoteById(id));
     close();
   };
 
@@ -82,6 +64,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           />
         </DialogTitle>
       </DialogHeader>
+      {/* IF TEXT */}
       {typeId === 0 && (
         <TextareaAutosize
           name="text"
@@ -92,45 +75,23 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
           className="resize-none bg-transparent focus:outline-none text-base"
         />
       )}
+      {/* IF LIST */}
       {typeId === 1 && (
-        <>
-          <ul className="list-disc ml-4">
-            {list?.map((item, index) => (
-              <li key={item.itemId} className="break-words">
-                <ListItem
-                  index={index}
-                  item={item.item}
-                  updateList={(updatedItem) =>
-                    updateListItem(index, updatedItem)
-                  }
-                  removeItem={() =>
-                    setList((list) => {
-                      const newList = [...(list ?? [])];
-                      newList.splice(index, 1);
-                      return newList;
-                    })
-                  }
-                />
-              </li>
-            ))}
-            <li>
-              <form onSubmit={handleEditList}>
-                <input
-                  name="list-item-new"
-                  placeholder="List item"
-                  tabIndex={-1}
-                  value={listItem}
-                  autoComplete="off"
-                  onChange={(event) => setListItem(event.target.value)}
-                  className="w-4/5 bg-transparent focus:outline-none text-base"
-                />
-              </form>
-            </li>
-          </ul>
-        </>
+        <ListGroup
+          list={list}
+          setList={setList}
+          listNewItem={listNewItem}
+          setListNewItem={setListNewItem}
+        />
       )}
       <DialogFooter>
-        <Button className="bg-stone-700 !px-1" onClick={handleDelete}>
+        <Button
+          className="bg-stone-700 !px-1"
+          onClick={() => {
+            dispatch(deleteNoteById(id));
+            close();
+          }}
+        >
           <Trash2 className="h-4" />
         </Button>
       </DialogFooter>

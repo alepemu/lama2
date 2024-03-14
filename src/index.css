@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #18181b;
+  color: white;
+}
+
 .animate-fade-in {
   @apply animate-note-fade-in;
 }
