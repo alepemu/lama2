@@ -1,7 +1,7 @@
 // Types
-import { NoteInputType } from "@/types";
+import { NoteDataType } from "@/types";
 
-const handleServerError = (newNote: NoteInputType, message: string) => {
+const handleServerError = (newNote: NoteDataType, message: string) => {
   newNote.data.title = "Oops!";
   newNote.data.text = message;
   newNote.data.typeId = 0;
@@ -11,8 +11,8 @@ const createNewNote = async (
   input: string,
   typeId: number,
   method: string
-): Promise<NoteInputType> => {
-  const newNote: NoteInputType = {
+): Promise<NoteDataType> => {
+  const newNote: NoteDataType = {
     data: { title: input, typeId: typeId, text: undefined, list: undefined },
   };
 

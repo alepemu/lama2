@@ -2,18 +2,16 @@ import { CSSProperties } from "react";
 // Types
 import { NoteCloseProps } from "@/types";
 // Styles
-import { backgroundColor } from "@/utils/placeholders";
+import { bgNoteColor } from "@/utils/placeholders";
 
 const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
   const theme = data.theme || "default";
-  const bgFrom = backgroundColor[theme as keyof typeof backgroundColor][0];
-  const bgTo = backgroundColor[theme as keyof typeof backgroundColor][1];
-
+  const bgColors = bgNoteColor[theme as keyof typeof bgNoteColor];
   const inlineStyles: CSSProperties = {
     opacity: isDragging ? "0.75" : "1",
     border: isDragging ? "2px dashed white" : "",
     cursor: isDragging ? "move" : "default",
-    background: `linear-gradient(to right, ${bgFrom}, ${bgTo})`, // Add this line
+    background: `linear-gradient(to right, ${bgColors[0]}, ${bgColors[1]})`,
     ...style,
   };
 

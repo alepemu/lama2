@@ -10,18 +10,15 @@ import {
   DialogTitle,
 } from "@/components/shadcn/Dialog";
 import { ListGroup } from "@/components/notes/list/ListGroup";
-import { Button } from "@/components/shadcn/Button";
+import { NoteActions } from "@/components/notes/actions/NoteActions";
 import TextareaAutosize from "react-textarea-autosize";
 // Types
 import { NoteOpenProps } from "@/types";
-// Icons
-import { Trash2 } from "lucide-react";
 // Styles
-import { backgroundColor } from "@/utils/placeholders";
+import { bgNoteColor } from "@/utils/placeholders";
 
 export function NoteOpen({ id, data, close }: NoteOpenProps) {
   const { typeId } = data;
-  const theme = data.theme || "default";
 
   const [title, setTitle] = useState<string>(data.title);
   const [text, setText] = useState<string | undefined>(data.text);
@@ -36,8 +33,6 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
 
     let updatedList = list;
     if (listNewItem !== "") {
-      console.log(listNewItem);
-
       const item = { itemId: Date.now(), item: listNewItem };
       updatedList = [...(list ?? []), item];
       setList(updatedList);
@@ -51,17 +46,16 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
     close();
   };
 
-  const bgFrom = backgroundColor[theme as keyof typeof backgroundColor][0];
-  const bgTo = backgroundColor[theme as keyof typeof backgroundColor][1];
-
+  const theme = data.theme || "default";
+  const bgColors = bgNoteColor[theme as keyof typeof bgNoteColor];
   const inlineStyles: CSSProperties = {
-    background: `linear-gradient(to right, ${bgFrom}, ${bgTo})`, // Add this line
+    background: `linear-gradient(to right, ${bgColors[0]}, ${bgColors[1]})`,
   };
 
   return (
     <DialogContent
       style={inlineStyles}
-      className="bg-gradient-to-br from-stone-600 to-stone-700 text-white border-y-2 border-white/25"
+      className="text-white border-y-2 border-white/25"
       onInteractOutside={(event) => handleEditNote(event as any)}
     >
       <DialogHeader>
@@ -97,15 +91,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
         />
       )}
       <DialogFooter>
-        <Button
-          className="bg-stone-700 !px-1"
-          onClick={() => {
-            dispatch(deleteNoteById(id));
-            close();
-          }}
-        >
-          <Trash2 className="h-4" />
-        </Button>
+        <NoteActions id={id} data={data} handleEditNote={handleEditNote} />
       </DialogFooter>
     </DialogContent>
   );

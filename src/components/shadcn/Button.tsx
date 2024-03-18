@@ -11,10 +11,12 @@ const buttonVariants = cva(
       variant: {
         empty: "",
         default: "border-2 border-white/25",
+        action: "border-2 border-white/25",
       },
       size: {
         default: "px-3 py-0.5 rounded-xl",
         toggle: "px-2 rounded-lg",
+        mini: "h-8 px-2 py-1 rounded-xl",
       },
     },
     defaultVariants: {

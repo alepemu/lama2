@@ -15,11 +15,13 @@ const missingNote = {
   text: "Missing note and/or data",
 };
 
-const backgroundColor = {
+const bgNoteColor = {
   default: ["#57534e", "#44403c"],
-  blue: ["#4d5e7f", "#3e4e6f"],
-  cyan: ["#115e59", "#134e4a"],
-  orange: ["#7f5e4d", "#6f4e3e"],
+  blue: ["#0369a1", "#075985"],
+  cyan: ["#0d9488", "#0f766e"],
+  green: ["#65a30d", "#4d7c0f"],
+  yellow: ["#ca8a04", "#a16207"],
+  orange: ["#c2410c", "#9a3412"],
 };
 
-export { noteInputText, missingNote, backgroundColor };
+export { noteInputText, missingNote, bgNoteColor };
