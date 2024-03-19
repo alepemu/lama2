@@ -10,12 +10,12 @@ type NewNoteOptionsProps = {
   setMethod: (method: NoteMethods) => void;
 };
 
-export function NewNoteOptions({
+export const NewNoteOptions = ({
   type,
   method,
   setType,
   setMethod,
-}: NewNoteOptionsProps) {
+}: NewNoteOptionsProps) => {
   return (
     <div className="flex justify-center items-center gap-2">
       <p>Add</p>
@@ -58,4 +58,4 @@ export function NewNoteOptions({
       </div>
     </div>
   );
-}
+};

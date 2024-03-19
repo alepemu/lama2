@@ -12,7 +12,7 @@ import { NoteActionProps } from "@/types";
 // Styles
 import { bgNoteColor } from "@/utils/placeholders";
 
-export function NoteActions({ id, data, handleEditNote }: NoteActionProps) {
+export const NoteActions = ({ id, data, handleEditNote }: NoteActionProps) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -20,6 +20,7 @@ export function NoteActions({ id, data, handleEditNote }: NoteActionProps) {
       <div className="flex justify-end items-center gap-1.5">
         <Sheet>
           <Button
+            title="Delete button"
             variant="action"
             size="mini"
             className="bg-stone-800/50"
@@ -30,7 +31,12 @@ export function NoteActions({ id, data, handleEditNote }: NoteActionProps) {
             <Trash className="h-4" />
           </Button>
           <SheetTrigger asChild>
-            <Button variant="action" size="mini" className="bg-stone-800/50">
+            <Button
+              title="Theme button"
+              variant="action"
+              size="mini"
+              className="bg-stone-800/50"
+            >
               <Paintbrush className="h-4" />
             </Button>
           </SheetTrigger>
@@ -63,6 +69,7 @@ export function NoteActions({ id, data, handleEditNote }: NoteActionProps) {
           </SheetContent>
         </Sheet>
         <Button
+          title="Save button"
           variant="action"
           size="mini"
           className="bg-white/20"
@@ -74,4 +81,4 @@ export function NoteActions({ id, data, handleEditNote }: NoteActionProps) {
       </div>
     </>
   );
-}
+};

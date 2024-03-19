@@ -14,7 +14,7 @@ import { noteInputText } from "@/utils/placeholders";
 // Icons
 import { Plus, Sparkles } from "lucide-react";
 
-export function NewNoteInput() {
+export const NewNoteInput = () => {
   const [type, setType] = useState<NoteTypes>("note");
   const [method, setMethod] = useState<NoteMethods>("manual");
   const loading = useAppSelector((state) => state.loading);
@@ -66,4 +66,4 @@ export function NewNoteInput() {
       </div>
     </div>
   );
-}
+};

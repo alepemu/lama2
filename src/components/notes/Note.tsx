@@ -6,14 +6,14 @@ import { NoteClose } from "@/components/notes/NoteClose";
 import { NoteOpen } from "@/components/notes/NoteOpen";
 import { Dialog, DialogTrigger } from "@/components/shadcn/Dialog";
 
-const Note = forwardRef<HTMLDivElement, NoteProps>(
+export const Note = forwardRef<HTMLDivElement, NoteProps>(
   ({ id, data, isDragging, style, ...props }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
       <Dialog open={isOpen}>
         <DialogTrigger asChild onClick={() => setIsOpen(true)}>
-          <div ref={ref} {...props}>
+          <div ref={ref} {...props} data-testid="note-close-container">
             <NoteClose data={data} style={style} isDragging={isDragging} />
           </div>
         </DialogTrigger>
@@ -22,5 +22,3 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(
     );
   }
 );
-
-export { Note };

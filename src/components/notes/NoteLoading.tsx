@@ -1,6 +1,4 @@
-import { FC } from "react";
-
-const NoteLoading: FC = () => {
+export const NoteLoading = () => {
   return (
     <div className="flex flex-col justify-center min-w-80 min:h-24 overflow-hidden bg-gradient-to-br from-stone-600 to-stone-700 p-4 rounded-xl border-2 border-white/25 animate-fade-in">
       <div className="flex w-fit mx-auto animate-bounce-side">
@@ -12,5 +10,3 @@ const NoteLoading: FC = () => {
     </div>
   );
 };
-
-export { NoteLoading };

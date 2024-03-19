@@ -7,7 +7,7 @@ const handleServerError = (newNote: NoteDataType, message: string) => {
   newNote.data.typeId = 0;
 };
 
-const createNewNote = async (
+export const createNewNote = async (
   input: string,
   typeId: number,
   method: string
@@ -44,5 +44,3 @@ const createNewNote = async (
 
   return newNote;
 };
-
-export { createNewNote };

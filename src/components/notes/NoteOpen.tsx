@@ -17,7 +17,7 @@ import { NoteOpenProps } from "@/types";
 // Styles
 import { bgNoteColor } from "@/utils/placeholders";
 
-export function NoteOpen({ id, data, close }: NoteOpenProps) {
+export const NoteOpen = ({ id, data, close }: NoteOpenProps) => {
   const { typeId } = data;
 
   const [title, setTitle] = useState<string>(data.title);
@@ -56,6 +56,7 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
     <DialogContent
       style={inlineStyles}
       className="text-white border-y-2 border-white/25"
+      data-testid="note-open-container"
       onInteractOutside={(event) => handleEditNote(event as any)}
     >
       <DialogHeader>
@@ -95,4 +96,4 @@ export function NoteOpen({ id, data, close }: NoteOpenProps) {
       </DialogFooter>
     </DialogContent>
   );
-}
+};

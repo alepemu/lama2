@@ -4,7 +4,7 @@ import { NoteCloseProps } from "@/types";
 // Styles
 import { bgNoteColor } from "@/utils/placeholders";
 
-const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
+export const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
   const theme = data.theme || "default";
   const bgColors = bgNoteColor[theme as keyof typeof bgNoteColor];
   const inlineStyles: CSSProperties = {
@@ -34,4 +34,3 @@ const NoteClose = ({ data, style, isDragging }: NoteCloseProps) => {
     </div>
   );
 };
-export { NoteClose };

@@ -1,4 +1,4 @@
-const noteInputText = {
+export const noteInputText = {
   note: {
     manual: "e.g. Note to remember...",
     ai: "e.g. Definition of closure...",
@@ -9,13 +9,13 @@ const noteInputText = {
   },
 };
 
-const missingNote = {
+export const missingNote = {
   typeId: 0,
   title: "Error",
   text: "Missing note and/or data",
 };
 
-const bgNoteColor = {
+export const bgNoteColor = {
   default: ["#57534e", "#44403c"],
   blue: ["#0369a1", "#075985"],
   cyan: ["#0d9488", "#0f766e"],
@@ -23,5 +23,3 @@ const bgNoteColor = {
   yellow: ["#ca8a04", "#a16207"],
   orange: ["#c2410c", "#9a3412"],
 };
-
-export { noteInputText, missingNote, bgNoteColor };

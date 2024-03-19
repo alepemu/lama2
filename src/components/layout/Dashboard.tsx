@@ -28,7 +28,7 @@ import { updateNotesOrder } from "@/store/notes.slice";
 import { NoteType } from "@/types";
 import { missingNote } from "@/utils/placeholders";
 
-export function Dashboard() {
+export const Dashboard = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const loading = useAppSelector((state) => state.loading);
   const notes = useAppSelector((state) => state.notes);
@@ -75,4 +75,4 @@ export function Dashboard() {
       </DndContext>
     </>
   );
-}
+};

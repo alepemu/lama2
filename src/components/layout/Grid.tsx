@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 // Hooks
 import { useSize } from "@/hooks/useSize";
 
-export function Grid({ children }: { children: ReactNode }) {
+export const Grid = ({ children }: { children: ReactNode }) => {
   const [sizeRef, size] = useSize({ px: 32 });
   const columns = Math.floor(size.width / 320);
 
@@ -17,4 +17,4 @@ export function Grid({ children }: { children: ReactNode }) {
       {children}
     </div>
   );
-}
+};

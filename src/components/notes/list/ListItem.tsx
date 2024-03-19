@@ -8,12 +8,12 @@ type ListItemProps = {
   removeItem: () => void;
 };
 
-export function ListItem({
+export const ListItem = ({
   index,
   item: content,
   updateList,
   removeItem,
-}: ListItemProps) {
+}: ListItemProps) => {
   const [item, setItem] = useState(content);
 
   return (
@@ -37,4 +37,4 @@ export function ListItem({
       </button>
     </div>
   );
-}
+};
