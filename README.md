@@ -1,9 +1,21 @@
-<div align="center">
-  <img src="public/logo.svg" alt="logo" width="100" height="auto" />
+<div align="center" >
+  <img src="public/logo.svg" alt="logo" height="100" height="auto" style="filter: invert(1);"/>
   <h1>LAMA2</h1>
 </div>
-  
-#### LAMA2 is an enhanced version of the original project LAMA (Life Admin Management Advisor) incorporating new features like TypeScript, Redux, AI-powered note generation, drag-and-drop and more. It is currently under development.
+
+#### LAMA2 is an enhanced version of the original project LAMA (Life Admin Management Advisor) incorporating new features like TypeScript, Redux, AI-powered note generation, drag-and-drop and more.
+
+<div align="center" >
+  <h4>
+    <a href="https://lama2-delta.vercel.app/">View Demo*</a>
+    <span> · </span>
+    <a href="https://github.com/alepemu/lama2">Documentation</a>
+    <span> · </span>
+    <a href="https://github.com/alepemu/lama2/issues">Report Bug / Request Feature</a>
+  </h4>
+</div>
+
+**Currently under development; demo data is stored locally.*
 
 ## 📄 About the Project
 
@@ -82,6 +94,7 @@ To run tests, run the following command
 - [x] Frontend note manipulation
 - [ ] Backend and database integration
 - [ ] Profiles and authentication
+- [ ] Include light mode
 - [ ] Add email notifications
 - [ ] Make it PWA (offline and push notifications)
 
