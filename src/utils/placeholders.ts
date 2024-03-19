@@ -17,9 +17,9 @@ export const missingNote = {
 
 export const bgNoteColor = {
   default: ["#57534e", "#44403c"],
-  blue: ["#0369a1", "#075985"],
-  cyan: ["#0d9488", "#0f766e"],
-  green: ["#65a30d", "#4d7c0f"],
-  yellow: ["#ca8a04", "#a16207"],
-  orange: ["#c2410c", "#9a3412"],
+  blue: ["#075985", "#0c4a6e"],
+  cyan: ["#0f766e", "#115e59"],
+  green: ["#4d7c0f", "#3f6212"],
+  yellow: ["#a16207", "#854d0e"],
+  red: ["#9a3412", "#7f1d1d"],
 };

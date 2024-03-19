@@ -2,7 +2,7 @@
   {
     "data": {
       "title": "About LAMA2",
-      "text": "This is an enhanced version of the original project LAMA incorporating new features and technologies like TypeScript, Redux, AI-powered note generation, drag-and-drop functionality and much more. The project is open source and available on GitHub.",
+      "text": "This is an enhanced version of the original project LAMA incorporating new features like TypeScript, Redux, AI-powered note generation, drag-and-drop and more. The project is open source and available on GitHub.",
       "typeId": 0,
       "theme": "cyan"
     },
@@ -10,15 +10,14 @@
   },
   {
     "data": {
-      "title": "What's new @ v0.2.1",
+      "title": "What's new @ v0.2.2",
       "list": [
-        { "itemId": 31, "item": "Note text line breaks corrected" },
         {
           "itemId": 32,
           "item": "Note textarea input height resizes automatically"
         },
-        { "itemId": 33, "item": "Note lists fully modifiable" },
-        { "itemId": 34, "item": "Note max dialog height limited" }
+        { "itemId": 36, "item": "Colour themes added" },
+        { "itemId": 37, "item": "Delete, Theme and Save buttons" }
       ],
       "typeId": 1,
       "theme": "blue"
@@ -30,14 +29,11 @@
       "title": "What's coming next",
       "list": [
         { "itemId": 35, "item": "Drag note to bin/delete in desktop" },
-        { "itemId": 36, "item": "Options menu on each note" },
         { "itemId": 22, "item": "Integrate authentication" },
-        { "itemId": 23, "item": "Connect to database" },
-        { "itemId": 24, "item": "Error handling" },
-        { "itemId": 25, "item": "Testing" }
+        { "itemId": 23, "item": "Connect to database" }
       ],
       "typeId": 1,
-      "theme": "orange"
+      "theme": "yellow"
     },
     "id": "3"
   }
