@@ -1,9 +1,7 @@
 <div align="center" >
-  <img src="public/logo.svg" alt="logo" height="100" height="auto" style="filter: invert(1);"/>
+  <img src="public/logo.svg" alt="logo" height="100" style="filter: invert(1);"/>
   <h1>LAMA2</h1>
 </div>
-
-#### LAMA2 is an enhanced version of the original project LAMA (Life Admin Management Advisor) incorporating new features like TypeScript, Redux, AI-powered note generation, drag-and-drop and more.
 
 <div align="center" >
   <h4>
@@ -15,14 +13,17 @@
   </h4>
 </div>
 
-**Currently under development; demo data is stored locally.*
+#### LAMA2 is an enhanced version of the original project LAMA (Life Admin Management Advisor) incorporating new features like TypeScript, Redux, AI-powered note generation, drag-and-drop and more.
+
+
+**Currently under development; demo data is stored locally; backend server (AI) might be unavailable.*
 
 ## 📄 About the Project
 
-### 📷 Screenshots
+### 📷 Media
 
 <div align="center"> 
-  <img src="public/screenshots/desktop01.jpg" alt="screenshot" width='800'/>
+  <img src="public/screenshots/recording02.gif" alt="recording"/>
 </div>
 
 ### 🛰️ Tech Stack
@@ -53,13 +54,11 @@
 | Accent Color    | ![#d97706](https://via.placeholder.com/10/D97706?text=+) #D97706 |
 | Text Color      | ![#fafafa](https://via.placeholder.com/10/FAFAFA?text=+) #FAFAFA |
 
-### 🗝️ Environment Variables (WIP)
+### 🗝️ Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`VITE_APP_API_URL`
-or  
-`VITE_APP_OPENAI_API_KEY`
+`VITE_APP_OPENAI_API_KEY` *(not yet available)*
 
 ## 🏁 Getting Started
 
@@ -100,7 +99,7 @@ To run tests, run the following command
 
 ## 👨‍💻 Contact
 
-Alejandro - [www.alepemu.me/](https://www.alepemu.me/) - apenalvermunita@gmail.com  
+Alejandro - [www.alepemu.me](https://www.alepemu.me) - @ apenalvermunita@gmail.com  
 Project Link: [https://github.com/alepemu/lama2](https://github.com/alepemu/lama2)
 
 ## 💎 Acknowledgements
