@@ -46,6 +46,7 @@ export const NewNoteInput = () => {
         <form
           onSubmit={handleSubmit}
           className="flex justify-center items-center gap-2"
+          data-testid="new-note-form"
         >
           <input
             disabled={loading}
@@ -54,6 +55,7 @@ export const NewNoteInput = () => {
             placeholder={noteInputText[type][method]}
             autoComplete="off"
             className="bg-transparent py-1 px-2 border-b-2 border-white/50 focus:outline-none"
+            data-testid="new-note-input"
           />
           <button
             disabled={loading}
