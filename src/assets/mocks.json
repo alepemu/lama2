@@ -10,14 +10,14 @@
   },
   {
     "data": {
-      "title": "What's new @ v0.2.2",
+      "title": "What's new @ v0.2.3",
       "list": [
         {
           "itemId": 32,
-          "item": "Note textarea input height resizes automatically"
+          "item": "Textarea input resizes automatically"
         },
-        { "itemId": 36, "item": "Colour themes added" },
-        { "itemId": 37, "item": "Delete, Theme and Save buttons" }
+        { "itemId": 37, "item": "Delete, Theme and Save buttons" },
+        { "itemId": 35, "item": "Drag note to bin/delete in desktop" }
       ],
       "typeId": 1,
       "theme": "blue"
@@ -28,7 +28,8 @@
     "data": {
       "title": "What's coming next",
       "list": [
-        { "itemId": 35, "item": "Drag note to bin/delete in desktop" },
+        { "itemId": 38, "item": "Possibility to restore last deleted note" },
+        { "itemId": 39, "item": "Improve list note edition" },
         { "itemId": 22, "item": "Integrate authentication" },
         { "itemId": 23, "item": "Connect to database" }
       ],
