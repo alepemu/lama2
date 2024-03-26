@@ -13,12 +13,15 @@ const handleDragStart = (
 const handleDragEnd = (
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>,
   arrangeNotes: (items: NoteType[]) => void,
+  deleteNote: (id: string) => void,
   items: NoteType[]
 ) =>
   useCallback(
     (event: DragEndEvent) => {
       const { active, over } = event;
-      if (active.id !== over?.id) {
+      if (event.over?.id === "bin") {
+        deleteNote(active.id.toString());
+      } else if (over && active.id !== over?.id) {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over!.id);
         arrangeNotes(arrayMove(items, oldIndex, newIndex));

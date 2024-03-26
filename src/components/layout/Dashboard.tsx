@@ -2,12 +2,12 @@ import { useState } from "react";
 // Drag and drop
 import {
   DndContext,
-  closestCenter,
   DragOverlay,
   useSensors,
   useSensor,
   MouseSensor,
   TouchSensor,
+  rectIntersection,
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { mouseActivation, touchActivation } from "@/utils/dndSensors";
@@ -20,10 +20,11 @@ import {
 import { Grid } from "./Grid";
 import { Note } from "../notes/Note";
 import { NoteSortable } from "../notes/NoteSortable";
+import { NoteDroppableBin } from "../notes/NoteDroppableBin";
 import { NoteLoading } from "../notes/NoteLoading";
 // State
 import { useAppSelector, useAppDispatch } from "@/hooks/store";
-import { updateNotesOrder } from "@/store/notes.slice";
+import { updateNotesOrder, deleteNoteById } from "@/store/notes.slice";
 // Types
 import { NoteType } from "@/types";
 import { missingNote } from "@/utils/placeholders";
@@ -40,14 +41,15 @@ export const Dashboard = () => {
 
   const dispatch = useAppDispatch();
   const arrangeNotes = (notes: NoteType[]) => dispatch(updateNotesOrder(notes));
+  const deleteNote = (id: string) => dispatch(deleteNoteById(id));
 
   return (
     <>
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
+        collisionDetection={rectIntersection}
         onDragStart={handleDragStart(setActiveId)}
-        onDragEnd={handleDragEnd(setActiveId, arrangeNotes, notes)}
+        onDragEnd={handleDragEnd(setActiveId, arrangeNotes, deleteNote, notes)}
         onDragCancel={handleDragCancel(setActiveId)}
       >
         <div className="overflow-clip animate-dashboard-intro">
@@ -60,7 +62,7 @@ export const Dashboard = () => {
             </Grid>
           </SortableContext>
 
-          <DragOverlay>
+          <DragOverlay zIndex={10}>
             {activeId ? (
               <Note
                 id={activeId}
@@ -71,6 +73,11 @@ export const Dashboard = () => {
               />
             ) : null}
           </DragOverlay>
+          <div
+            style={{ transition: "opacity 0.5s", opacity: activeId ? 1 : 0 }}
+          >
+            {activeId && <NoteDroppableBin />}
+          </div>
         </div>
       </DndContext>
     </>
