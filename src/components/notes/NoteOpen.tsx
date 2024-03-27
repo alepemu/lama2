@@ -76,8 +76,8 @@ export const NoteOpen = ({ id, data, close }: NoteOpenProps) => {
         <TextareaAutosize
           name="text"
           placeholder="Note"
-          tabIndex={-1}
           value={text}
+          onFocus={(event) => (event.target.selectionStart = -1)}
           onChange={(event) => setText(event.target.value)}
           className="resize-none bg-transparent focus:outline-none text-base"
         />
