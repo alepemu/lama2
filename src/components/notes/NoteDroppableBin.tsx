@@ -10,6 +10,9 @@ export const NoteDroppableBin: FC = () => {
 
   const style = {
     opacity: isOver ? 1 : 0.5,
+    backgroundImage: isOver
+      ? "linear-gradient(transparent 50%, rgb(139, 0, 0, 0.3) 100%)"
+      : "none",
     transition: "all 0.5s",
     transformOrigin: "bottom",
     transform: isOver ? "scale(1.5)" : "scale(1)",
@@ -20,7 +23,7 @@ export const NoteDroppableBin: FC = () => {
     <div
       ref={setNodeRef}
       style={style}
-      className=" cursor-alias fixed hidden sm:flex justify-center items-center w-full bottom-0 h-16"
+      className=" cursor-alias fixed flex justify-center items-center w-full bottom-0 h-16"
     >
       <Trash2 size={35} />
     </div>

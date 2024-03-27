@@ -29,9 +29,7 @@
       "title": "What's coming next",
       "list": [
         { "itemId": 38, "item": "Possibility to restore last deleted note" },
-        { "itemId": 39, "item": "Improve list note edition" },
-        { "itemId": 22, "item": "Integrate authentication" },
-        { "itemId": 23, "item": "Connect to database" }
+        { "itemId": 39, "item": "Improve list note edition" }
       ],
       "typeId": 1,
       "theme": "yellow"
