@@ -12,12 +12,9 @@
     "data": {
       "title": "What's new @ v0.2.3",
       "list": [
-        {
-          "itemId": 32,
-          "item": "Textarea input resizes automatically"
-        },
         { "itemId": 37, "item": "Delete, Theme and Save buttons" },
-        { "itemId": 35, "item": "Drag note to bin/delete in desktop" }
+        { "itemId": 39, "item": "Improve list note edition" },
+        { "itemId": 35, "item": "Drag note to bin/delete" }
       ],
       "typeId": 1,
       "theme": "blue"
@@ -28,8 +25,9 @@
     "data": {
       "title": "What's coming next",
       "list": [
-        { "itemId": 38, "item": "Possibility to restore last deleted note" },
-        { "itemId": 39, "item": "Improve list note edition" }
+        { "itemId": 38, "item": "Restore last deleted note option" },
+        { "itemId": 40, "item": "Backend and database integration" },
+        { "itemId": 41, "item": "Profiles and authentication" }
       ],
       "typeId": 1,
       "theme": "yellow"
